@@ -11,48 +11,48 @@ const reviews = [
 
 const ReviewsSection = () => {
   return (
-    <section className="py-28 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 gradient-mesh" />
+    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 gradient-mesh opacity-50" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 text-xs font-semibold tracking-[0.2em] uppercase text-accent bg-accent/8 rounded-full mb-5 border border-accent/15">
+        <div className="text-center mb-14">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 text-[10px] font-bold tracking-[0.25em] uppercase text-accent bg-accent/8 rounded-full mb-5 border border-accent/15">
             Referencie
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
             Čo hovoria naši <span className="text-gradient">zákazníci</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto">Reálne skúsenosti od našich klientov</p>
+          <p className="text-muted-foreground text-sm max-w-md mx-auto">Reálne skúsenosti od našich klientov</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {reviews.map((r, i) => (
             <div
               key={i}
-              className="group bg-card rounded-2xl p-8 hover:shadow-xl transition-all duration-500 border border-border/50 relative overflow-hidden hover:-translate-y-1"
+              className="group bg-card rounded-xl p-7 hover:shadow-lg transition-all duration-500 border border-border/40 relative overflow-hidden hover:-translate-y-1"
             >
-              {/* Hover accent line */}
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/0 group-hover:via-accent/50 to-transparent transition-all duration-500" />
+              {/* Top accent */}
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/0 group-hover:via-accent/40 to-transparent transition-all duration-500" />
 
-              <Quote className="w-8 h-8 text-accent/10 mb-4 group-hover:text-accent/20 transition-colors" />
+              <Quote className="w-7 h-7 text-accent/8 mb-3 group-hover:text-accent/15 transition-colors" />
 
-              <div className="flex gap-0.5 mb-5">
+              <div className="flex gap-0.5 mb-4">
                 {[...Array(5)].map((_, j) => (
-                  <Star key={j} className="w-3.5 h-3.5 fill-accent text-accent" />
+                  <Star key={j} className="w-3 h-3 fill-accent text-accent" />
                 ))}
               </div>
 
-              <p className="text-foreground/75 mb-8 leading-relaxed text-[15px]">
+              <p className="text-foreground/70 mb-7 leading-relaxed text-sm">
                 „{r.text}"
               </p>
 
-              <div className="flex items-center gap-3 pt-6 border-t border-border/50">
-                <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">
+              <div className="flex items-center gap-3 pt-5 border-t border-border/40">
+                <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-xs">
                   {r.name[0]}
                 </div>
                 <div>
                   <p className="font-semibold text-foreground text-sm">{r.name}</p>
-                  <p className="text-xs text-muted-foreground">{r.city}</p>
+                  <p className="text-[11px] text-muted-foreground">{r.city}</p>
                 </div>
               </div>
             </div>
