@@ -175,8 +175,8 @@ const Navbar = () => {
 
               {/* Full-width mega dropdown */}
               {item.children && openDropdown === item.label && (
-                <div className="fixed left-0 right-0 top-full pt-0" style={{ top: scrolled ? '53px' : '53px' }}>
-                  <div className="bg-card/[0.98] backdrop-blur-3xl border-b border-border/40 shadow-2xl shadow-foreground/[0.06]">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50">
+                  <div className="bg-card/[0.98] backdrop-blur-3xl rounded-2xl border border-border/40 shadow-2xl shadow-foreground/[0.06] max-w-[680px] w-[680px]">
                     {/* Accent line */}
                     <div className="h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
                     
