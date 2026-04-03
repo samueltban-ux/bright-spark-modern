@@ -4,7 +4,7 @@ const categories = [
   {
     title: "Ošetrenie tváre",
     subtitle: "HIFU CONTLEX SENSE",
-    image: "https://www.bsltrade.sk/wp-content/uploads/2026/03/01.png",
+    image: "https://i.postimg.cc/BQ6gh7sS/HIFU-CONTLEX-SENSE.png",
     href: "https://www.bsltrade.sk/hifu-contlex-sense/",
     count: "15+",
     label: "prístrojov",
