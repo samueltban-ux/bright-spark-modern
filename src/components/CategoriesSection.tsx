@@ -12,7 +12,7 @@ const categories = [
   {
     title: "Ošetrenie tela",
     subtitle: "ENDO U-SHAPE",
-    image: "https://www.bsltrade.sk/wp-content/uploads/2025/08/01-1.png",
+    image: "https://i.postimg.cc/h4Ms1RFW/01-1.png",
     href: "https://www.bsltrade.sk/endo-u-shape/",
     count: "12+",
     label: "prístrojov",
