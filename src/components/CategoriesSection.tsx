@@ -4,7 +4,7 @@ const categories = [
   {
     title: "Ošetrenie tváre",
     subtitle: "HIFU CONTLEX SENSE",
-    image: "https://www.bsltrade.sk/wp-content/uploads/2026/03/01.png",
+    image: "https://i.postimg.cc/BQ6gh7sS/HIFU-CONTLEX-SENSE.png",
     href: "https://www.bsltrade.sk/hifu-contlex-sense/",
     count: "15+",
     label: "prístrojov",
@@ -12,7 +12,7 @@ const categories = [
   {
     title: "Ošetrenie tela",
     subtitle: "ENDO U-SHAPE",
-    image: "https://www.bsltrade.sk/wp-content/uploads/2025/08/01-1.png",
+    image: "https://i.postimg.cc/h4Ms1RFW/01-1.png",
     href: "https://www.bsltrade.sk/endo-u-shape/",
     count: "12+",
     label: "prístrojov",
@@ -20,7 +20,7 @@ const categories = [
   {
     title: "IPL a Lasery",
     subtitle: "APOLO",
-    image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/apolo-Photoroom.png",
+    image: "https://i.postimg.cc/44wPQRC4/apolo-Photoroom.png",
     href: "https://www.bsltrade.sk/apolo/",
     count: "5+",
     label: "prístrojov",

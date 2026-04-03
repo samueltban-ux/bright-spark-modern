@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, ExternalLink } from "lucide-react";
+import logoImg from "@/assets/logo.png";
 
 interface NavChild {
   label: string;
@@ -19,50 +20,50 @@ const navItems: NavItem[] = [
     label: "OŠETRENIE TVÁRE",
     href: "#tvare",
     children: [
-      { label: "PROFACIAL", href: "https://www.bsltrade.sk/profacial/", image: "https://www.bsltrade.sk/wp-content/uploads/2019/06/fff-1.jpg" },
-      { label: "HYDRA BEAUTY MULTI", href: "https://www.bsltrade.sk/hydra-beauty-multi/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/hydra-beauty-multi.png" },
-      { label: "HYDRO MASTER", href: "https://www.bsltrade.sk/hydro-master/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/hydro-master.png" },
-      { label: "R.THERMA", href: "https://www.bsltrade.sk/r-therma/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/r-therma.png" },
-      { label: "THERMA V", href: "https://www.bsltrade.sk/therma-v/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/therma-v.png" },
-      { label: "EMS-tvár", href: "https://www.bsltrade.sk/ems-tvar/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/ems-tvar.png" },
-      { label: "HIFU 360 SMART MAX", href: "https://www.bsltrade.sk/hifu-360d-max/", image: "https://www.bsltrade.sk/wp-content/uploads/2025/08/360.jpg" },
-      { label: "HIFU 8D PRO", href: "https://www.bsltrade.sk/hifu-8d-pro/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/hifu-8d-pro.png" },
-      { label: "HIFU 10D", href: "https://www.bsltrade.sk/hifu-10d/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/hifu-10d.png" },
-      { label: "HIFU CONTLEX SENSE", href: "https://www.bsltrade.sk/hifu-contlex-sense/", image: "https://www.bsltrade.sk/wp-content/uploads/2026/03/01.png" },
-      { label: "CARE 7", href: "https://www.bsltrade.sk/care-7/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/care-7.png" },
-      { label: "PLAMINGO /Plazma/", href: "https://www.bsltrade.sk/plamingo-plazma/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/plamingo.png" },
-      { label: "PLASMAGUN", href: "https://www.bsltrade.sk/plasmagun/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/plasmagun.png" },
-      { label: "FRAKČNÁ RÁDIOFREKVENCIA", href: "https://www.bsltrade.sk/frakcna-radiofrekvencia/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/frakcna-rf.png" },
-      { label: "AQUA INJECTOR", href: "https://www.bsltrade.sk/aqua-injector/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/aqua-injector.png" },
+      { label: "PROFACIAL", href: "https://www.bsltrade.sk/profacial/", image: "https://i.postimg.cc/Yq93XDkz/profacial.png" },
+      { label: "HYDRA BEAUTY MULTI", href: "https://www.bsltrade.sk/hydra-beauty-multi/", image: "https://i.postimg.cc/zXBjd253/HYDRO.jpg" },
+      { label: "HYDRO MASTER", href: "https://www.bsltrade.sk/hydro-master/", image: "https://i.postimg.cc/Hsx2SvHs/HYDRO-MASTER.jpg" },
+      { label: "R.THERMA", href: "https://www.bsltrade.sk/r-therma/", image: "https://i.postimg.cc/ZKRcfsZF/R-Therma.jpg" },
+      { label: "THERMA V", href: "https://www.bsltrade.sk/therma-v/", image: "https://i.postimg.cc/YqsxTNqW/thermavb-300x470.png" },
+      { label: "EMS-tvár", href: "https://www.bsltrade.sk/ems-tvar/", image: "https://i.postimg.cc/FFGpVXts/ems.png" },
+      { label: "HIFU 360 SMART MAX", href: "https://www.bsltrade.sk/hifu-360d-max/", image: "https://i.postimg.cc/MZt5mJkw/360.jpg" },
+      { label: "HIFU 8D PRO", href: "https://www.bsltrade.sk/hifu-8d-pro/", image: "https://i.postimg.cc/kX4cjY94/hifu-1.png" },
+      { label: "HIFU 10D", href: "https://www.bsltrade.sk/hifu-10d/", image: "https://i.postimg.cc/vHBzP2MG/HIFU-10D.png" },
+      { label: "HIFU CONTLEX SENSE", href: "https://www.bsltrade.sk/hifu-contlex-sense/", image: "https://i.postimg.cc/BQ6gh7sS/HIFU-CONTLEX-SENSE.png" },
+      { label: "CARE 7", href: "https://www.bsltrade.sk/care-7/", image: "https://i.postimg.cc/c1ThBGq0/04.png" },
+      { label: "PLAMINGO /Plazma/", href: "https://www.bsltrade.sk/plamingo-plazma/", image: "https://i.postimg.cc/bNJT6V8k/plamingo.jpg" },
+      { label: "PLASMAGUN", href: "https://www.bsltrade.sk/plasmagun/", image: "https://i.postimg.cc/MKTDs3x0/plasmagun.png" },
+      { label: "FRAKČNÁ RÁDIOFREKVENCIA", href: "https://www.bsltrade.sk/frakcna-radiofrekvencia/", image: "https://i.postimg.cc/qBQwxHfJ/aa-768x829.png" },
+      { label: "AQUA INJECTOR", href: "https://www.bsltrade.sk/aqua-injector/", image: "https://i.postimg.cc/PfKyQnGn/0000005-e1577740712143.jpg" },
     ],
   },
   {
     label: "OŠETRENIE TELA",
     href: "#telo",
     children: [
-      { label: "EM MASTER", href: "https://www.bsltrade.sk/em-master/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/em-master.png" },
-      { label: "EMS-telo", href: "https://www.bsltrade.sk/ems-telo/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/ems-telo.png" },
-      { label: "ROBOLEX PLUS", href: "https://www.bsltrade.sk/robolex/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/robolex.png" },
-      { label: "PROCARE XP", href: "https://www.bsltrade.sk/procare-xp/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/procare-xp.png" },
-      { label: "RIGENERA 3", href: "https://www.bsltrade.sk/top-kombinovane-systemy/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/rigenera.png" },
-      { label: "ENDO U-SHAPE", href: "https://www.bsltrade.sk/endo-u-shape/", image: "https://www.bsltrade.sk/wp-content/uploads/2025/08/01-1.png" },
-      { label: "V-SHAPE PLATINUM", href: "https://www.bsltrade.sk/v-shape-platinum/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/v-shape.png" },
-      { label: "MED SHAPE", href: "https://www.bsltrade.sk/med-shape/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/med-shape.png" },
-      { label: "VIEWFIX", href: "https://www.bsltrade.sk/viewfix/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/viewfix.png" },
-      { label: "KRYOLIPOLÝZA", href: "https://www.bsltrade.sk/kryolipolyza/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/kryolipolyza.png" },
-      { label: "RÁZOVÁ VLNA", href: "https://www.bsltrade.sk/razova-vlna-2/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/razova-vlna.png" },
-      { label: "LYMFODRENÁŽ", href: "https://www.bsltrade.sk/lymfodrenaz/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/lymfodrenaz.png" },
+      { label: "EM MASTER", href: "https://www.bsltrade.sk/em-master/", image: "https://i.postimg.cc/FFGpVXts/ems.png" },
+      { label: "EMS-telo", href: "https://www.bsltrade.sk/ems-telo/", image: "https://i.postimg.cc/FFGpVXts/ems.png" },
+      { label: "ROBOLEX PLUS", href: "https://www.bsltrade.sk/robolex/", image: "https://i.postimg.cc/BQ6gh7sD/NEO.png" },
+      { label: "PROCARE XP", href: "https://www.bsltrade.sk/procare-xp/", image: "https://i.postimg.cc/vHNvC7Hx/sdsdfsd-Photoroom.png" },
+      { label: "RIGENERA 3", href: "https://www.bsltrade.sk/top-kombinovane-systemy/", image: "https://i.postimg.cc/zXck4wXb/Rigenera-3-2.png" },
+      { label: "ENDO U-SHAPE", href: "https://www.bsltrade.sk/endo-u-shape/", image: "https://i.postimg.cc/h4Ms1RFW/01-1.png" },
+      { label: "V-SHAPE PLATINUM", href: "https://www.bsltrade.sk/v-shape-platinum/", image: "https://i.postimg.cc/28Kxgd84/V-SHAPE-PLATINUM.png" },
+      { label: "MED SHAPE", href: "https://www.bsltrade.sk/med-shape/", image: "https://i.postimg.cc/gkJDMtdL/MED-SHAPE.png" },
+      { label: "VIEWFIX", href: "https://www.bsltrade.sk/viewfix/", image: "https://i.postimg.cc/kXpyLNXN/VIEWFIX.png" },
+      { label: "KRYOLIPOLÝZA", href: "https://www.bsltrade.sk/kryolipolyza/", image: "https://i.postimg.cc/yYbT2hYX/X-COOL.jpg" },
+      { label: "RÁZOVÁ VLNA", href: "https://www.bsltrade.sk/razova-vlna-2/", image: "https://i.postimg.cc/xjg53Dww/01-2.jpg" },
+      { label: "LYMFODRENÁŽ", href: "https://www.bsltrade.sk/lymfodrenaz/", image: "https://i.postimg.cc/wxF2Q8Cn/01-1.jpg" },
     ],
   },
   {
     label: "IPL & LASERY",
     href: "#ipl",
     children: [
-      { label: "APOLO", href: "https://www.bsltrade.sk/apolo/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/apolo-Photoroom.png" },
-      { label: "IPL BETA", href: "https://www.bsltrade.sk/ipl/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/ipl-beta.png" },
-      { label: "EPIL EVO", href: "https://www.bsltrade.sk/epil-evo/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/epil-evo.png" },
-      { label: "EPIL MULTI-WAVE", href: "https://www.bsltrade.sk/epil-multi-wave/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/epil-multi-wave.png" },
-      { label: "PICOLASER 500", href: "https://www.bsltrade.sk/picolaser-500/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/picolaser.png" },
+      { label: "APOLO", href: "https://www.bsltrade.sk/apolo/", image: "https://i.postimg.cc/44wPQRC4/apolo-Photoroom.png" },
+      { label: "IPL BETA", href: "https://www.bsltrade.sk/ipl/", image: "https://i.postimg.cc/zXBjd25b/ipl-beta-1.png" },
+      { label: "EPIL EVO", href: "https://www.bsltrade.sk/epil-evo/", image: "https://i.postimg.cc/3JRBLf75/EVO-1.jpg" },
+      { label: "EPIL MULTI-WAVE", href: "https://www.bsltrade.sk/epil-multi-wave/", image: "https://i.postimg.cc/Gh2QMgrd/epil-multi-wave.png" },
+      { label: "PICOLASER 500", href: "https://www.bsltrade.sk/picolaser-500/", image: "https://i.postimg.cc/dt1BWNvy/Pico-Laser.jpg" },
     ],
   },
   {
@@ -121,7 +122,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between py-3 px-4">
         <a href="#" className="flex items-center gap-3 group">
           <img
-            src="https://www.bsltrade.sk/wp-content/uploads/2024/09/log90.png"
+            src={logoImg}
             alt="BSL Trade s.r.o."
             className="h-10 transition-transform duration-300 group-hover:scale-105"
           />
