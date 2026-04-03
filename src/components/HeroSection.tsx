@@ -16,7 +16,7 @@ const slides = [
     subtitle: "Od širokých línií po jemné detaily.",
     desc: "Vysokointenzívny fokusovaný ultrazvuk MADE IN KOREA. Magnetický systém riadenia pohybu pre presné ošetrenie.",
     link: "https://www.bsltrade.sk/hifu-contlex-sense/",
-    image: "https://www.bsltrade.sk/wp-content/uploads/2026/03/01.png",
+    image: "https://i.postimg.cc/BQ6gh7sS/HIFU-CONTLEX-SENSE.png",
     badge: "Novinka",
     gradient: "from-violet-600/30 via-purple-500/20 to-blue-400/10",
   },
