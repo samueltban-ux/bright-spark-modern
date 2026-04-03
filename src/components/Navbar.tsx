@@ -124,10 +124,9 @@ const Navbar = () => {
   };
 
   const getGridCols = (count: number) => {
-    if (count <= 5) return "grid-cols-2 sm:grid-cols-3 md:grid-cols-5";
-    if (count <= 8) return "grid-cols-2 sm:grid-cols-3 md:grid-cols-4";
-    if (count <= 12) return "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5";
-    return "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5";
+    if (count <= 5) return "grid-cols-3";
+    if (count <= 9) return "grid-cols-4";
+    return "grid-cols-5";
   };
 
   return (
@@ -175,12 +174,12 @@ const Navbar = () => {
 
               {/* Full-width mega dropdown */}
               {item.children && openDropdown === item.label && (
-                <div className="fixed left-0 right-0 top-full pt-0" style={{ top: scrolled ? '53px' : '53px' }}>
-                  <div className="bg-card/[0.98] backdrop-blur-3xl border-b border-border/40 shadow-2xl shadow-foreground/[0.06]">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50">
+                  <div className="bg-card/[0.98] backdrop-blur-3xl rounded-2xl border border-border/40 shadow-2xl shadow-foreground/[0.06] max-w-[680px] w-[680px]">
                     {/* Accent line */}
                     <div className="h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
                     
-                    <div className="container mx-auto px-6 py-6">
+                    <div className="px-5 py-5">
                       {/* Header */}
                       <div className="flex items-center justify-between mb-5">
                         <div className="flex items-center gap-3">
