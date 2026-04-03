@@ -180,7 +180,7 @@ const Navbar = () => {
                     {/* Accent line */}
                     <div className="h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
                     
-                    <div className="container mx-auto px-6 py-6">
+                    <div className="px-5 py-5">
                       {/* Header */}
                       <div className="flex items-center justify-between mb-5">
                         <div className="flex items-center gap-3">
