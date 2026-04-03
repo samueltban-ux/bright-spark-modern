@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, ExternalLink } from "lucide-react";
+import logoImg from "@/assets/logo.png";
 
 interface NavChild {
   label: string;
