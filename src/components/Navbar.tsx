@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown, ExternalLink } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Menu, X, ChevronDown, ExternalLink, ArrowRight } from "lucide-react";
 import logoImg from "@/assets/logo.png";
 
 interface NavChild {
@@ -102,6 +102,7 @@ const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [imgErrors, setImgErrors] = useState<Set<string>>(new Set());
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -113,104 +114,129 @@ const Navbar = () => {
     setImgErrors(prev => new Set(prev).add(label));
   };
 
+  const handleMouseEnter = (label: string) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setOpenDropdown(label);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => setOpenDropdown(null), 150);
+  };
+
+  const getGridCols = (count: number) => {
+    if (count <= 5) return "grid-cols-2 sm:grid-cols-3 md:grid-cols-5";
+    if (count <= 8) return "grid-cols-2 sm:grid-cols-3 md:grid-cols-4";
+    if (count <= 12) return "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5";
+    return "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5";
+  };
+
   return (
     <nav className={`sticky top-0 z-50 transition-all duration-500 ${
       scrolled 
-        ? "bg-card/90 backdrop-blur-2xl shadow-lg shadow-foreground/[0.03] border-b border-border/50" 
-        : "bg-card/60 backdrop-blur-xl border-b border-border/30"
+        ? "bg-card/95 backdrop-blur-2xl shadow-xl shadow-foreground/[0.04] border-b border-border/40" 
+        : "bg-card/70 backdrop-blur-xl border-b border-border/20"
     }`}>
-      <div className="container mx-auto flex items-center justify-between py-3 px-4">
+      <div className="container mx-auto flex items-center justify-between py-2.5 px-4">
         <a href="#" className="flex items-center gap-3 group">
           <img
             src={logoImg}
             alt="BSL Trade s.r.o."
-            className="h-10 transition-transform duration-300 group-hover:scale-105"
+            className="h-9 transition-transform duration-300 group-hover:scale-105"
           />
         </a>
 
         {/* Desktop nav */}
-        <div className="hidden lg:flex items-center gap-0.5">
+        <div className="hidden lg:flex items-center gap-0">
           {navItems.map((item) => (
             <div
               key={item.label}
               className="relative"
-              onMouseEnter={() => setOpenDropdown(item.label)}
-              onMouseLeave={() => setOpenDropdown(null)}
+              onMouseEnter={() => handleMouseEnter(item.label)}
+              onMouseLeave={handleMouseLeave}
             >
               <a
                 href={item.href}
-                className={`flex items-center gap-1 px-3 py-2 text-[11px] font-semibold tracking-wider rounded-lg transition-all duration-300 ${
+                className={`relative flex items-center gap-1.5 px-3.5 py-2 text-[10.5px] font-bold tracking-[0.08em] uppercase rounded-lg transition-all duration-300 ${
                   openDropdown === item.label
-                    ? "text-accent bg-accent/5"
-                    : "text-foreground/60 hover:text-foreground"
+                    ? "text-accent"
+                    : "text-foreground/55 hover:text-foreground/90"
                 }`}
               >
                 {item.label}
                 {item.children && (
-                  <ChevronDown className={`w-3 h-3 opacity-50 transition-transform duration-300 ${
-                    openDropdown === item.label ? "rotate-180" : ""
+                  <ChevronDown className={`w-3 h-3 opacity-40 transition-transform duration-300 ${
+                    openDropdown === item.label ? "rotate-180 opacity-80" : ""
                   }`} />
+                )}
+                {openDropdown === item.label && item.children && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-accent rounded-full" />
                 )}
               </a>
 
-              {/* Mega dropdown */}
+              {/* Full-width mega dropdown */}
               {item.children && openDropdown === item.label && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2">
-                  <div className="bg-card/98 backdrop-blur-2xl rounded-2xl shadow-2xl shadow-foreground/[0.08] border border-border/60 p-4 min-w-[320px] max-w-[560px] animate-in fade-in slide-in-from-top-2 duration-200">
-                    {/* Category header */}
-                    <div className="flex items-center gap-2 mb-3 px-1">
-                      <div className="h-px flex-1 bg-border/50" />
-                      <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-muted-foreground/60">
-                        {item.label}
-                      </span>
-                      <div className="h-px flex-1 bg-border/50" />
-                    </div>
-
-                    <div className={`grid gap-1 ${
-                      item.children.length > 6 ? "grid-cols-2" : "grid-cols-1"
-                    }`}>
-                      {item.children.map((child) => (
+                <div className="fixed left-0 right-0 top-full pt-0" style={{ top: scrolled ? '53px' : '53px' }}>
+                  <div className="bg-card/[0.98] backdrop-blur-3xl border-b border-border/40 shadow-2xl shadow-foreground/[0.06]">
+                    {/* Accent line */}
+                    <div className="h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
+                    
+                    <div className="container mx-auto px-6 py-6">
+                      {/* Header */}
+                      <div className="flex items-center justify-between mb-5">
+                        <div className="flex items-center gap-3">
+                          <div className="w-1 h-5 bg-accent rounded-full" />
+                          <h3 className="text-sm font-bold text-foreground/90 tracking-wide">
+                            {item.label}
+                          </h3>
+                          <span className="text-[10px] font-medium text-muted-foreground/50 bg-muted/40 px-2 py-0.5 rounded-full">
+                            {item.children.length} produktov
+                          </span>
+                        </div>
                         <a
-                          key={child.label}
-                          href={child.href}
-                          className="group/item flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-accent/5 transition-all duration-200"
+                          href={item.href}
+                          className="group/all flex items-center gap-1.5 text-[10px] font-bold tracking-[0.15em] uppercase text-accent/60 hover:text-accent transition-colors"
                         >
-                          {/* Product thumbnail */}
-                          <div className="w-10 h-10 rounded-lg bg-muted/50 border border-border/40 flex-shrink-0 overflow-hidden flex items-center justify-center group-hover/item:border-accent/30 group-hover/item:bg-accent/5 transition-all duration-200">
-                            {child.image && !imgErrors.has(child.label) ? (
-                              <img
-                                src={child.image}
-                                alt={child.label}
-                                className="w-8 h-8 object-contain transition-transform duration-300 group-hover/item:scale-110"
-                                onError={() => handleImgError(child.label)}
-                              />
-                            ) : (
-                              <span className="text-[10px] font-bold text-muted-foreground/50">
-                                {child.label.substring(0, 2)}
-                              </span>
-                            )}
-                          </div>
+                          Zobraziť všetky
+                          <ArrowRight className="w-3 h-3 transition-transform group-hover/all:translate-x-0.5" />
+                        </a>
+                      </div>
 
-                          <div className="flex-1 min-w-0">
-                            <span className="text-[12px] font-medium text-foreground/70 group-hover/item:text-accent transition-colors duration-200 truncate block">
+                      {/* Product grid */}
+                      <div className={`grid gap-3 ${getGridCols(item.children.length)}`}>
+                        {item.children.map((child) => (
+                          <a
+                            key={child.label}
+                            href={child.href}
+                            className="group/card relative flex flex-col items-center p-4 rounded-2xl border border-border/30 bg-background/40 hover:bg-accent/[0.04] hover:border-accent/20 transition-all duration-300 hover:shadow-lg hover:shadow-accent/[0.04] hover:-translate-y-0.5"
+                          >
+                            {/* Image container */}
+                            <div className="relative w-full aspect-square rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 flex items-center justify-center mb-3 overflow-hidden">
+                              {child.image && !imgErrors.has(child.label) ? (
+                                <img
+                                  src={child.image}
+                                  alt={child.label}
+                                  className="w-[75%] h-[75%] object-contain transition-all duration-500 group-hover/card:scale-110"
+                                  onError={() => handleImgError(child.label)}
+                                />
+                              ) : (
+                                <span className="text-lg font-black text-muted-foreground/20">
+                                  {child.label.substring(0, 2)}
+                                </span>
+                              )}
+                              {/* Hover glow */}
+                              <div className="absolute inset-0 bg-accent/[0.03] opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 rounded-xl" />
+                            </div>
+
+                            {/* Label */}
+                            <span className="text-[11px] font-semibold text-foreground/70 group-hover/card:text-accent text-center leading-tight transition-colors duration-200 line-clamp-2">
                               {child.label}
                             </span>
-                          </div>
 
-                          <ExternalLink className="w-3 h-3 text-muted-foreground/0 group-hover/item:text-accent/50 transition-all duration-200 flex-shrink-0" />
-                        </a>
-                      ))}
-                    </div>
-
-                    {/* Footer link */}
-                    <div className="mt-3 pt-3 border-t border-border/40">
-                      <a
-                        href={item.href}
-                        className="flex items-center justify-center gap-1.5 text-[10px] font-semibold tracking-wider uppercase text-accent/70 hover:text-accent transition-colors"
-                      >
-                        Zobraziť všetky
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
+                            {/* External icon */}
+                            <ExternalLink className="absolute top-2.5 right-2.5 w-3 h-3 text-muted-foreground/0 group-hover/card:text-accent/40 transition-all duration-300" />
+                          </a>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -230,11 +256,11 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-card/98 backdrop-blur-2xl border-t border-border/50 max-h-[80vh] overflow-y-auto">
+        <div className="lg:hidden bg-card/[0.98] backdrop-blur-2xl border-t border-border/40 max-h-[85vh] overflow-y-auto">
           {navItems.map((item) => (
             <div key={item.label}>
               <button
-                className="w-full text-left px-6 py-3.5 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted/50 border-b border-border/20 transition-colors"
+                className="w-full text-left px-5 py-3.5 text-sm font-semibold text-foreground/80 hover:text-foreground hover:bg-muted/30 border-b border-border/15 transition-colors flex items-center justify-between"
                 onClick={() => {
                   if (!item.children) {
                     setMobileOpen(false);
@@ -244,41 +270,41 @@ const Navbar = () => {
                   }
                 }}
               >
-                <span className="flex items-center justify-between">
-                  {item.label}
-                  {item.children && (
-                    <ChevronDown className={`w-4 h-4 opacity-40 transition-transform duration-300 ${openDropdown === item.label ? "rotate-180" : ""}`} />
-                  )}
-                </span>
+                {item.label}
+                {item.children && (
+                  <ChevronDown className={`w-4 h-4 opacity-40 transition-transform duration-300 ${openDropdown === item.label ? "rotate-180" : ""}`} />
+                )}
               </button>
               {item.children && openDropdown === item.label && (
-                <div className="bg-muted/20 py-1">
-                  {item.children.map((child) => (
-                    <a
-                      key={child.label}
-                      href={child.href}
-                      className="flex items-center gap-3 px-6 py-2.5 hover:bg-accent/5 transition-colors"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      <div className="w-8 h-8 rounded-lg bg-muted/60 border border-border/30 flex-shrink-0 overflow-hidden flex items-center justify-center">
-                        {child.image && !imgErrors.has(child.label) ? (
-                          <img
-                            src={child.image}
-                            alt={child.label}
-                            className="w-6 h-6 object-contain"
-                            onError={() => handleImgError(child.label)}
-                          />
-                        ) : (
-                          <span className="text-[8px] font-bold text-muted-foreground/40">
-                            {child.label.substring(0, 2)}
-                          </span>
-                        )}
-                      </div>
-                      <span className="text-sm text-muted-foreground hover:text-accent transition-colors">
-                        {child.label}
-                      </span>
-                    </a>
-                  ))}
+                <div className="bg-muted/10 p-3">
+                  <div className="grid grid-cols-3 gap-2">
+                    {item.children.map((child) => (
+                      <a
+                        key={child.label}
+                        href={child.href}
+                        className="group/mcard flex flex-col items-center p-2.5 rounded-xl border border-border/20 hover:border-accent/20 hover:bg-accent/[0.03] transition-all"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        <div className="w-full aspect-square rounded-lg bg-muted/20 flex items-center justify-center mb-1.5 overflow-hidden">
+                          {child.image && !imgErrors.has(child.label) ? (
+                            <img
+                              src={child.image}
+                              alt={child.label}
+                              className="w-[70%] h-[70%] object-contain"
+                              onError={() => handleImgError(child.label)}
+                            />
+                          ) : (
+                            <span className="text-[8px] font-bold text-muted-foreground/30">
+                              {child.label.substring(0, 2)}
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-[9px] font-semibold text-muted-foreground group-hover/mcard:text-accent text-center leading-tight line-clamp-2 transition-colors">
+                          {child.label}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
