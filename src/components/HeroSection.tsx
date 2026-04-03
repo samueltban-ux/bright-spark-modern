@@ -7,7 +7,7 @@ const slides = [
     subtitle: "IPL platforma plná svetla.",
     desc: "10 filtrov, neobmedzené možnosti ošetrení. Fotorejuvenizácia, cievková terapia a trvalé odstránenie chĺpkov.",
     link: "https://www.bsltrade.sk/apolo/",
-    image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/apolo-Photoroom.png",
+    image: "https://i.postimg.cc/44wPQRC4/apolo-Photoroom.png",
     badge: "IPL & Lasery",
     gradient: "from-blue-600/30 via-cyan-500/20 to-blue-400/10",
   },
