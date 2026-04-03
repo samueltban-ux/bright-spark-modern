@@ -121,7 +121,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between py-3 px-4">
         <a href="#" className="flex items-center gap-3 group">
           <img
-            src="https://www.bsltrade.sk/wp-content/uploads/2024/09/log90.png"
+            src={logoImg}
             alt="BSL Trade s.r.o."
             className="h-10 transition-transform duration-300 group-hover:scale-105"
           />
