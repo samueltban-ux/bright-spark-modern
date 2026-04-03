@@ -25,7 +25,7 @@ const slides = [
     subtitle: "Inovácie za výnimočnú cenu.",
     desc: "Tri ošetrujúce hlavice, technologické novinky bežné pre drahšie prístroje. Vynikajúci pomer ceny a výkonu.",
     link: "https://www.bsltrade.sk/hifu-360d-max/",
-    image: "https://www.bsltrade.sk/wp-content/uploads/2025/08/360.jpg",
+    image: "https://i.postimg.cc/MZt5mJkw/360.jpg",
     badge: "Bestseller",
     gradient: "from-sky-600/30 via-indigo-500/20 to-blue-400/10",
   },

@@ -8,7 +8,7 @@ const features = [
 ];
 
 const stats = [
-  { value: "15+", label: "Rokov skúseností" },
+  { value: "20+", label: "Rokov na trhu" },
   { value: "500+", label: "Spokojných klientov" },
   { value: "50+", label: "Typov prístrojov" },
 ];

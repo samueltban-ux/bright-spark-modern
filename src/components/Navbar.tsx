@@ -59,11 +59,11 @@ const navItems: NavItem[] = [
     label: "IPL & LASERY",
     href: "#ipl",
     children: [
-      { label: "APOLO", href: "https://www.bsltrade.sk/apolo/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/apolo-Photoroom.png" },
-      { label: "IPL BETA", href: "https://www.bsltrade.sk/ipl/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/ipl-beta.png" },
-      { label: "EPIL EVO", href: "https://www.bsltrade.sk/epil-evo/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/epil-evo.png" },
-      { label: "EPIL MULTI-WAVE", href: "https://www.bsltrade.sk/epil-multi-wave/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/epil-multi-wave.png" },
-      { label: "PICOLASER 500", href: "https://www.bsltrade.sk/picolaser-500/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/picolaser.png" },
+      { label: "APOLO", href: "https://www.bsltrade.sk/apolo/", image: "https://i.postimg.cc/44wPQRC4/apolo-Photoroom.png" },
+      { label: "IPL BETA", href: "https://www.bsltrade.sk/ipl/", image: "https://i.postimg.cc/zXBjd25b/ipl-beta-1.png" },
+      { label: "EPIL EVO", href: "https://www.bsltrade.sk/epil-evo/", image: "https://i.postimg.cc/3JRBLf75/EVO-1.jpg" },
+      { label: "EPIL MULTI-WAVE", href: "https://www.bsltrade.sk/epil-multi-wave/", image: "https://i.postimg.cc/Gh2QMgrd/epil-multi-wave.png" },
+      { label: "PICOLASER 500", href: "https://www.bsltrade.sk/picolaser-500/", image: "https://i.postimg.cc/dt1BWNvy/Pico-Laser.jpg" },
     ],
   },
   {
