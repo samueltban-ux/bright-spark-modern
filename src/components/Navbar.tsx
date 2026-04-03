@@ -124,10 +124,9 @@ const Navbar = () => {
   };
 
   const getGridCols = (count: number) => {
-    if (count <= 5) return "grid-cols-2 sm:grid-cols-3 md:grid-cols-5";
-    if (count <= 8) return "grid-cols-2 sm:grid-cols-3 md:grid-cols-4";
-    if (count <= 12) return "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5";
-    return "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5";
+    if (count <= 5) return "grid-cols-3";
+    if (count <= 9) return "grid-cols-4";
+    return "grid-cols-5";
   };
 
   return (
