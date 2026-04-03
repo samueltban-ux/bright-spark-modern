@@ -20,7 +20,7 @@ const categories = [
   {
     title: "IPL a Lasery",
     subtitle: "APOLO",
-    image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/apolo-Photoroom.png",
+    image: "https://i.postimg.cc/44wPQRC4/apolo-Photoroom.png",
     href: "https://www.bsltrade.sk/apolo/",
     count: "5+",
     label: "prístrojov",
