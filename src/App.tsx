@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import VipProgram from "./pages/VipProgram.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import RoiCalculator from "./components/RoiCalculator.tsx";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+      <RoiCalculator />
     </TooltipProvider>
   </QueryClientProvider>
 );
