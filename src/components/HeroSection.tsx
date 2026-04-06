@@ -130,13 +130,13 @@ const HeroSection = () => {
                 </div>
 
                 {/* Image */}
-                <div className={`hidden lg:flex justify-center items-center transition-all duration-700 delay-300 ${i === current ? "translate-y-0 opacity-100 scale-100" : "translate-y-8 opacity-0 scale-95"}`}>
+                <div className={`flex justify-center items-center transition-all duration-700 delay-300 ${i === current ? "translate-y-0 opacity-100 scale-100" : "translate-y-8 opacity-0 scale-95"}`}>
                   <div className="relative">
                     {/* Gradient glow */}
                     <div className={`absolute inset-0 -m-12 bg-gradient-to-br ${slide.gradient} rounded-full blur-[100px] scale-125`} />
 
                     {/* Outer ring */}
-                    <div className="absolute inset-0 -m-20 rounded-full border border-primary-foreground/[0.04] animate-spin" style={{ animationDuration: '40s' }} />
+                    <div className="absolute inset-0 -m-20 rounded-full border border-primary-foreground/[0.04] animate-spin hidden lg:block" style={{ animationDuration: '40s' }} />
 
                     {/* Inner decorative circle */}
                     <div className="absolute inset-0 -m-6 rounded-full bg-gradient-to-br from-primary-foreground/[0.03] to-transparent" />
@@ -144,7 +144,7 @@ const HeroSection = () => {
                     <img
                       src={slide.image}
                       alt={slide.title}
-                      className="relative z-10 max-h-[480px] w-auto object-contain drop-shadow-2xl animate-float"
+                      className="relative z-10 max-h-[280px] md:max-h-[380px] lg:max-h-[480px] w-auto object-contain drop-shadow-2xl animate-float"
                     />
                   </div>
                 </div>

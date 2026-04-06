@@ -84,11 +84,11 @@ const CategoriesSection = () => {
               </div>
 
               {/* Image */}
-              <div className="absolute inset-0 flex items-center justify-center p-12 pt-16">
+              <div className="absolute inset-0 flex items-center justify-center p-8 pt-14">
                 <img
                   src={cat.image}
                   alt={cat.title}
-                  className="max-h-[60%] w-auto object-contain transition-all duration-700 group-hover:scale-110 drop-shadow-xl"
+                  className="max-h-[75%] w-auto object-contain transition-all duration-700 group-hover:scale-110 drop-shadow-xl"
                 />
               </div>
 
