@@ -3,23 +3,23 @@ import { Gift, Users, ArrowRight, Star, Repeat, BadgeEuro } from "lucide-react";
 const benefits = [
   {
     icon: BadgeEuro,
-    title: "1 100 € v hotovosti",
-    description: "Za každé úspešné odporúčanie získate odmenu priamo na váš účet.",
+    title: "Finančné odmeny",
+    description: "Získajte atraktívne finančné bonusy za vašu spoluprácu a lojalitu.",
   },
   {
     icon: Gift,
-    title: "1 800 € kredit",
-    description: "Alebo využite vyšší kredit na ďalší nákup prístrojov z našej ponuky.",
+    title: "Exkluzívne výhody",
+    description: "Špeciálne kredity a zvýhodnenia dostupné len pre členov VIP Programu.",
   },
   {
     icon: Repeat,
     title: "Bez obmedzení",
-    description: "Odporúčajte opakovane — počet odmien nie je nijako limitovaný.",
+    description: "Odmeny môžete získavať opakovane — žiadne limity, žiadne stropy.",
   },
   {
     icon: Users,
-    title: "Jednoduché odporúčanie",
-    description: "Stačí odporučiť kolegu, salón alebo kliniku. O zvyšok sa postaráme my.",
+    title: "Jednoduchý vstup",
+    description: "Stačí nás kontaktovať a my vám vysvetlíme všetky detaily osobne.",
   },
 ];
 
@@ -41,16 +41,14 @@ const VipProgramSection = () => {
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-5 font-heading">
-            Zarábajte s nami —{" "}
-            <span className="text-accent">opakovane a bez limitov</span>
+            Staňte sa súčasťou{" "}
+            <span className="text-accent">nášho VIP Programu</span>
           </h2>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-            Vlastníte od nás aspoň 3 prístroje a poznáte nás už dlhšie? Vstúpte do nášho
-            VIP Programu a získajte až{" "}
-            <strong className="text-foreground">1 100 €</strong> v hotovosti alebo{" "}
-            <strong className="text-foreground">1 800 € ako kredit</strong> na ďalší
-            nákup — za každé úspešné odporúčanie. A to najlepšie? Odmeny môžete získavať
-            znova a znova, bez akéhokoľvek obmedzenia.
+            Ste naším dlhodobým klientom a máte od nás viacero prístrojov? Máme pre vás
+            exkluzívny program s atraktívnymi odmenami, ktoré môžete získavať{" "}
+            <strong className="text-foreground">opakovane a bez akýchkoľvek limitov</strong>.
+            Kontaktujte nás a radi vám predstavíme všetky detaily osobne.
           </p>
         </div>
 
@@ -74,34 +72,15 @@ const VipProgramSection = () => {
 
         {/* How it works */}
         <div className="max-w-3xl mx-auto text-center bg-card/80 backdrop-blur-sm rounded-2xl border border-border/40 p-8 md:p-10">
-          <h3 className="text-lg font-bold text-foreground mb-3">Ako to funguje?</h3>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-sm text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <span className="w-7 h-7 rounded-full bg-accent/15 text-accent font-bold text-xs flex items-center justify-center">
-                1
-              </span>
-              <span>Odporučíte salón alebo kliniku</span>
-            </div>
-            <ArrowRight className="w-4 h-4 text-accent/40 hidden md:block" />
-            <div className="flex items-center gap-2">
-              <span className="w-7 h-7 rounded-full bg-accent/15 text-accent font-bold text-xs flex items-center justify-center">
-                2
-              </span>
-              <span>Oni si zakúpia prístroj</span>
-            </div>
-            <ArrowRight className="w-4 h-4 text-accent/40 hidden md:block" />
-            <div className="flex items-center gap-2">
-              <span className="w-7 h-7 rounded-full bg-accent/15 text-accent font-bold text-xs flex items-center justify-center">
-                3
-              </span>
-              <span>Vy získate odmenu</span>
-            </div>
-          </div>
+          <h3 className="text-lg font-bold text-foreground mb-3">Máte záujem?</h3>
+          <p className="text-sm text-muted-foreground mb-6">
+            Kontaktujte nás a my vám radi vysvetlíme všetky podmienky a výhody VIP Programu osobne.
+          </p>
           <a
             href="#kontakt"
-            className="inline-flex items-center gap-2 mt-7 px-7 py-3 rounded-xl bg-accent text-accent-foreground font-bold text-sm hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-accent text-accent-foreground font-bold text-sm hover:opacity-90 transition-opacity"
           >
-            Chcem sa zapojiť
+            Kontaktujte nás
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>
