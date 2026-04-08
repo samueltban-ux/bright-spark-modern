@@ -3,13 +3,13 @@ import { Gift, Users, ArrowRight, Star, Repeat, BadgeEuro } from "lucide-react";
 const benefits = [
   {
     icon: BadgeEuro,
-    title: "Finančné odmeny",
-    description: "Získajte atraktívne finančné bonusy za vašu spoluprácu a lojalitu.",
+    title: "1 100 € odmena",
+    description: "Získajte odmenu 1 100 € za každú úspešnú spoluprácu v rámci VIP Programu.",
   },
   {
     icon: Gift,
-    title: "Exkluzívne výhody",
-    description: "Špeciálne kredity a zvýhodnenia dostupné len pre členov VIP Programu.",
+    title: "1 800 € odmena",
+    description: "Pri vyššej úrovni spolupráce vás čaká odmena až 1 800 €.",
   },
   {
     icon: Repeat,
@@ -19,7 +19,7 @@ const benefits = [
   {
     icon: Users,
     title: "Jednoduchý vstup",
-    description: "Stačí nás kontaktovať a my vám vysvetlíme všetky detaily osobne.",
+    description: "Kontaktujte nás a my vám osobne vysvetlíme, ako sa zapojiť.",
   },
 ];
 
