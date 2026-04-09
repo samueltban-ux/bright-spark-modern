@@ -18,7 +18,7 @@ const Footer = () => {
           </div>
           
           <div className="flex items-center gap-6">
-            <a href="https://www.instagram.com/bsl_trade/" className="group flex items-center gap-1.5 text-primary-foreground/40 hover:text-accent transition-colors text-sm">
+            <a href="https://www.instagram.com/bsl_trade/" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1.5 text-primary-foreground/40 hover:text-accent transition-colors text-sm">
               Instagram
               <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
