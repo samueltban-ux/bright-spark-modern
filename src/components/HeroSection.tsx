@@ -132,14 +132,34 @@ const HeroSection = () => {
                 {/* Image */}
                 <div className={`flex justify-center items-center transition-all duration-700 delay-300 ${i === current ? "translate-y-0 opacity-100 scale-100" : "translate-y-8 opacity-0 scale-95"}`}>
                   <div className="relative">
-                    {/* Gradient glow */}
-                    <div className={`absolute inset-0 -m-12 bg-gradient-to-br ${slide.gradient} rounded-full blur-[100px] scale-125`} />
+                    {/* Multi-layer gradient glow */}
+                    <div className={`absolute inset-0 -m-16 bg-gradient-to-br ${slide.gradient} rounded-full blur-[120px] scale-125 animate-glow`} />
+                    <div className="absolute inset-0 -m-8 bg-accent/10 rounded-full blur-[80px] scale-110" />
 
-                    {/* Outer ring */}
-                    <div className="absolute inset-0 -m-20 rounded-full border border-primary-foreground/[0.04] animate-spin hidden lg:block" style={{ animationDuration: '40s' }} />
+                    {/* Outer rotating ring with dashes */}
+                    <div className="absolute inset-0 -m-24 rounded-full border border-dashed border-primary-foreground/[0.08] animate-spin hidden lg:block" style={{ animationDuration: '50s' }} />
 
-                    {/* Inner decorative circle */}
-                    <div className="absolute inset-0 -m-6 rounded-full bg-gradient-to-br from-primary-foreground/[0.03] to-transparent" />
+                    {/* Middle rotating ring */}
+                    <div className="absolute inset-0 -m-16 rounded-full border border-primary-foreground/[0.06] animate-spin hidden md:block" style={{ animationDuration: '35s', animationDirection: 'reverse' }} />
+
+                    {/* Inner gradient circle */}
+                    <div className="absolute inset-0 -m-6 rounded-full bg-gradient-to-br from-primary-foreground/[0.04] via-transparent to-accent/[0.03]" />
+
+                    {/* Orbital dots */}
+                    <div className="absolute inset-0 -m-24 hidden lg:block animate-spin" style={{ animationDuration: '25s' }}>
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-accent shadow-[0_0_12px_hsl(var(--accent))]" />
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-accent/60 shadow-[0_0_8px_hsl(var(--accent))]" />
+                    </div>
+                    <div className="absolute inset-0 -m-16 hidden md:block animate-spin" style={{ animationDuration: '30s', animationDirection: 'reverse' }}>
+                      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-accent/70 shadow-[0_0_10px_hsl(var(--accent))]" />
+                    </div>
+
+                    {/* Floating sparkles */}
+                    <Sparkles className="absolute -top-4 -right-2 w-5 h-5 text-accent/60 animate-float" style={{ animationDelay: '0.5s' }} />
+                    <Sparkles className="absolute bottom-8 -left-6 w-4 h-4 text-accent/40 animate-float-slow" style={{ animationDelay: '1.2s' }} />
+
+                    {/* Reflection plate under product */}
+                    <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-8 bg-accent/20 rounded-[50%] blur-2xl" />
 
                     <img
                       src={slide.image}
