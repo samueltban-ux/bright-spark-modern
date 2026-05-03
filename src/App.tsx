@@ -7,7 +7,7 @@ import Index from "./pages/Index.tsx";
 import VipProgram from "./pages/VipProgram.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import RoiCalculator from "./components/RoiCalculator.tsx";
-import FloatingActions from "./components/FloatingActions.tsx";
+import ScrollToTop from "./components/FloatingActions.tsx";
 
 const queryClient = new QueryClient();
 
@@ -25,7 +25,7 @@ const App = () => (
         </Routes>
       </BrowserRouter>
       <RoiCalculator />
-      <FloatingActions />
+      <ScrollToTop />
     </TooltipProvider>
   </QueryClientProvider>
 );
