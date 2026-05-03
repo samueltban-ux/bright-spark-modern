@@ -164,7 +164,7 @@ const HeroSection = () => {
                     <img
                       src={slide.image}
                       alt={slide.title}
-                      className="relative z-10 max-h-[280px] md:max-h-[380px] lg:max-h-[480px] w-auto object-contain drop-shadow-2xl animate-float"
+                      className="relative z-10 max-h-[360px] md:max-h-[480px] lg:max-h-[600px] w-auto object-contain drop-shadow-2xl animate-float"
                     />
                   </div>
                 </div>
