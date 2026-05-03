@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight, ArrowRight, Sparkles, Zap } from "lucide-react";
+import hifuContlexSense from "@/assets/hifu-contlex-sense.png";
 
 const slides = [
   {
@@ -16,7 +17,7 @@ const slides = [
     subtitle: "Od širokých línií po jemné detaily.",
     desc: "Vysokointenzívny fokusovaný ultrazvuk MADE IN KOREA. Magnetický systém riadenia pohybu pre presné ošetrenie.",
     link: "https://www.bsltrade.sk/hifu-contlex-sense/",
-    image: "https://i.postimg.cc/BQ6gh7sS/HIFU-CONTLEX-SENSE.png",
+    image: hifuContlexSense,
     badge: "Novinka",
     gradient: "from-violet-600/30 via-purple-500/20 to-blue-400/10",
   },
