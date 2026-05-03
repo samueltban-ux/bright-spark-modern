@@ -20,6 +20,7 @@ const navItems: NavItem[] = [
     label: "OŠETRENIE TVÁRE",
     href: "#tvare",
     children: [
+      { label: "ELLYSE SENSE", href: "https://www.bsltrade.sk/", image: "https://i.postimg.cc/CKSkDQ0g/01-2.png" },
       { label: "PROFACIAL", href: "https://www.bsltrade.sk/profacial/", image: "https://i.postimg.cc/Yq93XDkz/profacial.png" },
       { label: "HYDRA BEAUTY MULTI", href: "https://www.bsltrade.sk/hydra-beauty-multi/", image: "https://i.postimg.cc/zXBjd253/HYDRO.jpg" },
       { label: "HYDRO MASTER", href: "https://www.bsltrade.sk/hydro-master/", image: "https://i.postimg.cc/Hsx2SvHs/HYDRO-MASTER.jpg" },
@@ -59,6 +60,10 @@ const navItems: NavItem[] = [
     label: "IPL & LASERY",
     href: "#ipl",
     children: [
+      { label: "NEOFRAX", href: "https://www.bsltrade.sk/", image: "https://i.postimg.cc/xjg53Dww/01-2.jpg" },
+      { label: "Q-MASTER", href: "https://www.bsltrade.sk/", image: "https://i.postimg.cc/8CNMW0GV/01-3.jpg" },
+      { label: "BIOXEL", href: "https://www.bsltrade.sk/", image: "https://i.postimg.cc/qRYwdHhV/Bioxel.png" },
+      { label: "SOLRAY", href: "https://www.bsltrade.sk/", image: "https://i.postimg.cc/FHmZvZKB/Solray.png" },
       { label: "APOLO", href: "https://www.bsltrade.sk/apolo/", image: "https://i.postimg.cc/44wPQRC4/apolo-Photoroom.png" },
       { label: "IPL BETA", href: "https://www.bsltrade.sk/ipl/", image: "https://i.postimg.cc/zXBjd25b/ipl-beta-1.png" },
       { label: "EPIL EVO", href: "https://www.bsltrade.sk/epil-evo/", image: "https://i.postimg.cc/3JRBLf75/EVO-1.jpg" },
