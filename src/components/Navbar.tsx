@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown, ExternalLink, ArrowRight } from "lucide-react";
 import logoImg from "@/assets/logo.png";
+import hifuContlexSense from "@/assets/hifu-contlex-sense.png";
 
 interface NavChild {
   label: string;
@@ -30,7 +31,7 @@ const navItems: NavItem[] = [
       { label: "HIFU 360 SMART MAX", href: "https://www.bsltrade.sk/hifu-360d-max/", image: "https://i.postimg.cc/MZt5mJkw/360.jpg" },
       { label: "HIFU 8D PRO", href: "https://www.bsltrade.sk/hifu-8d-pro/", image: "https://i.postimg.cc/kX4cjY94/hifu-1.png" },
       { label: "HIFU 10D", href: "https://www.bsltrade.sk/hifu-10d/", image: "https://i.postimg.cc/vHBzP2MG/HIFU-10D.png" },
-      { label: "HIFU CONTLEX SENSE", href: "https://www.bsltrade.sk/hifu-contlex-sense/", image: "https://i.postimg.cc/BQ6gh7sS/HIFU-CONTLEX-SENSE.png" },
+      { label: "HIFU CONTLEX SENSE", href: "https://www.bsltrade.sk/hifu-contlex-sense/", image: hifuContlexSense },
       { label: "CARE 7", href: "https://www.bsltrade.sk/care-7/", image: "https://i.postimg.cc/c1ThBGq0/04.png" },
       { label: "PLAMINGO /Plazma/", href: "https://www.bsltrade.sk/plamingo-plazma/", image: "https://i.postimg.cc/bNJT6V8k/plamingo.jpg" },
       { label: "PLASMAGUN", href: "https://www.bsltrade.sk/plasmagun/", image: "https://i.postimg.cc/MKTDs3x0/plasmagun.png" },
