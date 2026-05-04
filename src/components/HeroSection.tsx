@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef, MouseEvent } from "react";
 import { ChevronLeft, ChevronRight, ArrowRight, Sparkles, Zap } from "lucide-react";
 import hifuContlexSense from "@/assets/hifu-contlex-sense.png";
+import MagneticButton from "@/components/MagneticButton";
 
 const slides = [
   {
@@ -151,13 +152,13 @@ const HeroSection = () => {
                   </p>
 
                   <div className="flex flex-wrap items-center gap-3">
-                    <a
+                    <MagneticButton
                       href={slide.link}
-                      className="group inline-flex items-center gap-3 px-7 py-3.5 bg-accent text-accent-foreground font-semibold rounded-xl hover:brightness-110 transition-all shadow-lg shadow-accent/20 hover:shadow-xl hover:shadow-accent/30 transform hover:-translate-y-0.5 text-sm"
+                      className="group items-center gap-3 px-7 py-3.5 bg-accent text-accent-foreground font-semibold rounded-xl hover:brightness-110 shadow-lg shadow-accent/20 hover:shadow-xl hover:shadow-accent/30 text-sm"
                     >
                       Zistiť viac
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </a>
+                    </MagneticButton>
                     <a
                       href="#kontakt"
                       className="inline-flex items-center gap-2 px-6 py-3.5 text-primary-foreground/50 font-medium hover:text-primary-foreground border border-primary-foreground/10 hover:border-primary-foreground/20 rounded-xl transition-all text-sm"
