@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef, MouseEvent } from "react";
 import { ChevronLeft, ChevronRight, ArrowRight, Sparkles, Zap } from "lucide-react";
 import hifuContlexSense from "@/assets/hifu-contlex-sense.png";
 
