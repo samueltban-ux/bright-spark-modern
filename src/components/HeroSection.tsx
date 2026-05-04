@@ -265,6 +265,9 @@ const HeroSection = () => {
           from { width: 0%; }
           to { width: 100%; }
         }
+        @keyframes heroConic {
+          to { transform: rotate(360deg); }
+        }
       `}</style>
     </section>
   );
