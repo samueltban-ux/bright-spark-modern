@@ -35,6 +35,8 @@ const slides = [
 const HeroSection = () => {
   const [current, setCurrent] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const stageRef = useRef<HTMLDivElement>(null);
 
   const goTo = useCallback((index: number) => {
     if (isTransitioning) return;
@@ -46,21 +48,56 @@ const HeroSection = () => {
   const prev = () => goTo((current - 1 + slides.length) % slides.length);
   const next = () => goTo((current + 1) % slides.length);
 
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    const el = stageRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    setTilt({ x, y });
+  };
+
+  const handleMouseLeave = () => setTilt({ x: 0, y: 0 });
+
   useEffect(() => {
     const timer = setInterval(() => goTo((current + 1) % slides.length), 7000);
     return () => clearInterval(timer);
   }, [current, goTo]);
 
+  const pad = (n: number) => String(n).padStart(2, "0");
+
   return (
-    <section className="relative min-h-[620px] md:min-h-[700px] lg:min-h-[780px] overflow-hidden">
+    <section
+      ref={stageRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="relative min-h-[620px] md:min-h-[700px] lg:min-h-[780px] overflow-hidden"
+    >
       {/* Dark base */}
       <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--navy-dark))] via-[hsl(var(--navy))] to-[hsl(var(--navy-light)/0.8)]" />
+
+      {/* Animated conic gradient — breathing */}
+      <div className="absolute inset-0 opacity-[0.18] mix-blend-screen pointer-events-none animate-[heroConic_22s_linear_infinite]"
+        style={{
+          background:
+            "conic-gradient(from 0deg at 50% 50%, hsl(var(--accent)/0.5), transparent 25%, hsl(var(--sky-light)/0.4) 50%, transparent 75%, hsl(var(--accent)/0.5))",
+          filter: "blur(80px)",
+        }}
+      />
 
       {/* Animated mesh */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-1/3 -left-1/4 w-[700px] h-[700px] bg-accent/10 rounded-full blur-[200px] animate-float-slow" />
         <div className="absolute -bottom-1/4 -right-1/4 w-[500px] h-[500px] bg-[hsl(var(--sky-light)/0.08)] rounded-full blur-[180px] animate-glow" />
         <div className="absolute top-1/3 right-1/3 w-[300px] h-[300px] bg-accent/5 rounded-full blur-[120px] animate-float" />
+      </div>
+
+      {/* Slide counter — top right */}
+      <div className="absolute top-6 right-6 md:top-8 md:right-10 z-20 hidden sm:flex items-baseline gap-1 font-mono">
+        <span className="text-2xl md:text-3xl font-bold text-primary-foreground tracking-tight">
+          {pad(current + 1)}
+        </span>
+        <span className="text-primary-foreground/30 text-sm">/ {pad(slides.length)}</span>
       </div>
 
       {/* Dot grid pattern */}
