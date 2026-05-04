@@ -39,8 +39,22 @@ const faqs = [
 ];
 
 const FaqSection = () => {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  };
+
   return (
     <section id="faq" className="py-24 md:py-32 relative overflow-hidden noise">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--navy))] via-[hsl(var(--navy-dark))] to-[hsl(var(--navy))]" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/4 rounded-full blur-[200px]" />
 
