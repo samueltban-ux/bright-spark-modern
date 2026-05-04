@@ -1,4 +1,5 @@
 import { ArrowUpRight, ArrowRight } from "lucide-react";
+import SmartImage from "@/components/SmartImage";
 
 const categories = [
   {
@@ -85,10 +86,11 @@ const CategoriesSection = () => {
 
               {/* Image */}
               <div className="absolute inset-0 flex items-center justify-center p-8 pt-14">
-                <img
+                <SmartImage
                   src={cat.image}
                   alt={cat.title}
-                  className="max-h-[75%] w-auto object-contain transition-all duration-700 group-hover:scale-110 drop-shadow-xl"
+                  wrapperClassName="max-h-[75%] w-auto flex items-center justify-center"
+                  className="max-h-full w-auto object-contain transition-all duration-700 group-hover:scale-110 drop-shadow-xl"
                 />
               </div>
 

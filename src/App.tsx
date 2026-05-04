@@ -8,6 +8,7 @@ import VipProgram from "./pages/VipProgram.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import RoiCalculator from "./components/RoiCalculator.tsx";
 import ScrollToTop from "./components/FloatingActions.tsx";
+import PageTransition from "./components/PageTransition.tsx";
 
 const queryClient = new QueryClient();
 
@@ -17,12 +18,14 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/vip-program" element={<VipProgram />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <PageTransition>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/vip-program" element={<VipProgram />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </PageTransition>
       </BrowserRouter>
       <RoiCalculator />
       <ScrollToTop />
