@@ -1,4 +1,5 @@
 import { Shield, Truck, GraduationCap, HeadphonesIcon, ArrowRight } from "lucide-react";
+import AnimatedCounter from "@/components/AnimatedCounter";
 
 const features = [
   { icon: Shield, title: "Kvalita", desc: "Zastupujeme významné európske značky", num: "01" },
@@ -31,7 +32,10 @@ const AboutSection = () => {
         <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-20">
           {stats.map((s) => (
             <div key={s.label} className="text-center">
-              <div className="text-3xl md:text-4xl font-extrabold text-accent mb-1">{s.value}</div>
+              <AnimatedCounter
+                value={s.value}
+                className="block text-3xl md:text-4xl font-extrabold text-accent mb-1"
+              />
               <div className="text-xs text-primary-foreground/40 uppercase tracking-[0.15em] font-medium">{s.label}</div>
             </div>
           ))}
