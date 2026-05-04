@@ -169,7 +169,14 @@ const HeroSection = () => {
 
                 {/* Image */}
                 <div className={`flex justify-center items-center transition-all duration-700 delay-300 ${i === current ? "translate-y-0 opacity-100 scale-100" : "translate-y-8 opacity-0 scale-95"}`}>
-                  <div className="relative">
+                  <div
+                    className="relative will-change-transform transition-transform duration-300 ease-out"
+                    style={{
+                      transform: i === current
+                        ? `perspective(1200px) rotateY(${tilt.x * 5}deg) rotateX(${-tilt.y * 5}deg) translate3d(${tilt.x * 12}px, ${tilt.y * 12}px, 0)`
+                        : undefined,
+                    }}
+                  >
                     {/* Multi-layer gradient glow */}
                     <div className={`absolute inset-0 -m-16 bg-gradient-to-br ${slide.gradient} rounded-full blur-[120px] scale-125 animate-glow`} />
                     <div className="absolute inset-0 -m-8 bg-accent/10 rounded-full blur-[80px] scale-110" />
