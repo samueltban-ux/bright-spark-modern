@@ -1,11 +1,12 @@
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import SmartImage from "@/components/SmartImage";
+import contlexSenseFull from "@/assets/contlex-sense-full.png";
 
 const categories = [
   {
     title: "Ošetrenie tváre",
     subtitle: "HIFU CONTLEX SENSE",
-    image: "https://i.postimg.cc/BQ6gh7sS/HIFU-CONTLEX-SENSE.png",
+    image: contlexSenseFull,
     href: "https://www.bsltrade.sk/hifu-contlex-sense/",
     count: "15+",
     label: "prístrojov",
