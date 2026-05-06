@@ -14,7 +14,7 @@ const parse = (v: string) => {
   return { num, prefix, suffix };
 };
 
-const AnimatedCounter = ({ value, duration = 1800, className }: CounterProps) => {
+const AnimatedCounter = ({ value, duration = 3200, className }: CounterProps) => {
   const { num, prefix, suffix } = parse(value);
   const [display, setDisplay] = useState(0);
   const ref = useRef<HTMLSpanElement | null>(null);
