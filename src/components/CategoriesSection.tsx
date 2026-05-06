@@ -89,7 +89,7 @@ const CategoriesSection = () => {
                 <SmartImage
                   src={cat.image}
                   alt={cat.title}
-                  wrapperClassName="max-h-[75%] w-auto flex items-center justify-center"
+                  wrapperClassName="max-h-[60%] w-auto flex items-center justify-center"
                   className="max-h-full w-auto object-contain transition-all duration-700 group-hover:scale-110 drop-shadow-xl"
                 />
               </div>
