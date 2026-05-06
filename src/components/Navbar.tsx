@@ -221,7 +221,7 @@ const Navbar = () => {
                                 <img
                                   src={child.image}
                                   alt={child.label}
-                                  className="w-[85%] h-[85%] object-contain transition-all duration-500 group-hover/card:scale-110"
+                                  className="w-[110%] h-[110%] object-contain transition-all duration-500 group-hover/card:scale-110"
                                   onError={() => handleImgError(child.label)}
                                 />
                               ) : (
