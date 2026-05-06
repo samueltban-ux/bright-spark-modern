@@ -90,7 +90,7 @@ const CategoriesSection = () => {
                 <SmartImage
                   src={cat.image}
                   alt={cat.title}
-                  wrapperClassName={`${cat.subtitle === "HIFU CONTLEX SENSE" ? "max-h-[16%]" : "max-h-[60%]"} w-auto flex items-center justify-center`}
+                  wrapperClassName={`${cat.subtitle === "HIFU CONTLEX SENSE" ? "max-h-[12%]" : "max-h-[60%]"} w-auto flex items-center justify-center`}
                   className="max-h-full w-auto object-contain transition-all duration-700 group-hover:scale-110 drop-shadow-xl"
                 />
               </div>
