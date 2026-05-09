@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown, ExternalLink, ArrowRight } from "lucide-react";
 import logoImg from "@/assets/logo.png";
 import hifuContlexSense from "@/assets/hifu-contlex-sense.png";
+import neofraxImg from "@/assets/neofrax.jpg";
 
 interface NavChild {
   label: string;
