@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef, MouseEvent } from "react";
 import { ChevronLeft, ChevronRight, ArrowRight, Sparkles, Zap } from "lucide-react";
 import hifuContlexSense from "@/assets/hifu-contlex-sense.png";
+import hifu360SmartMax from "@/assets/hifu-360-smart-max.png";
 import MagneticButton from "@/components/MagneticButton";
 
 const slides = [
@@ -27,7 +28,7 @@ const slides = [
     subtitle: "Inovácie za výnimočnú cenu.",
     desc: "Tri ošetrujúce hlavice, technologické novinky bežné pre drahšie prístroje. Vynikajúci pomer ceny a výkonu.",
     link: "https://www.bsltrade.sk/hifu-360d-max/",
-    image: "https://i.postimg.cc/MZt5mJkw/360.jpg",
+    image: hifu360SmartMax,
     badge: "Bestseller",
     gradient: "from-sky-600/30 via-indigo-500/20 to-blue-400/10",
   },
