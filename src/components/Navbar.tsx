@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown, ExternalLink, ArrowRight } from "lucide-react";
 import logoImg from "@/assets/logo.png";
 import hifuContlexSense from "@/assets/hifu-contlex-sense.png";
+import neofraxImg from "@/assets/neofrax.jpg";
 
 interface NavChild {
   label: string;
@@ -61,7 +62,7 @@ const navItems: NavItem[] = [
     label: "IPL & LASERY",
     href: "#ipl",
     children: [
-      { label: "NEOFRAX", href: "https://www.bsltrade.sk/", image: "https://i.postimg.cc/xjg53Dww/01-2.jpg" },
+      { label: "NEOFRAX", href: "https://www.bsltrade.sk/", image: neofraxImg },
       { label: "Q-MASTER", href: "https://www.bsltrade.sk/", image: "https://i.postimg.cc/8CNMW0GV/01-3.jpg" },
       { label: "BIOXEL", href: "https://www.bsltrade.sk/", image: "https://i.postimg.cc/qRYwdHhV/Bioxel.png" },
       { label: "SOLRAY", href: "https://www.bsltrade.sk/", image: "https://i.postimg.cc/FHmZvZKB/Solray.png" },
