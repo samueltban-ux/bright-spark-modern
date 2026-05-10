@@ -213,15 +213,20 @@ const Navbar = () => {
                           <a
                             key={child.label}
                             href={child.href}
-                            className="group/card relative flex flex-col items-center p-4 rounded-2xl border border-border/30 bg-background/40 hover:bg-accent/[0.04] hover:border-accent/20 transition-all duration-300 hover:shadow-lg hover:shadow-accent/[0.04] hover:-translate-y-0.5"
+                            className="group/card relative flex flex-col items-center p-3 rounded-2xl border border-border/40 bg-gradient-to-b from-background/80 to-background/30 hover:from-accent/[0.06] hover:to-background/40 hover:border-accent/40 transition-all duration-300 hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-1 overflow-hidden"
                           >
+                            {/* Top accent bar on hover */}
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-accent rounded-b-full group-hover/card:w-1/2 transition-all duration-300" />
+
                             {/* Image container */}
-                            <div className="relative w-full aspect-square rounded-xl bg-gradient-to-br from-muted/30 to-muted/10 flex items-center justify-center mb-3 overflow-hidden">
+                            <div className="relative w-full aspect-square rounded-xl bg-gradient-to-br from-muted/40 via-background/20 to-muted/10 flex items-center justify-center mb-2.5 overflow-hidden ring-1 ring-border/20 group-hover/card:ring-accent/30 transition-all duration-300">
+                              {/* Radial glow */}
+                              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsl(var(--accent)/0.12),transparent_70%)] opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
                               {child.image && !imgErrors.has(child.label) ? (
                                 <img
                                   src={child.image}
                                   alt={child.label}
-                                  className="w-full h-full object-contain transition-all duration-500 group-hover/card:scale-110"
+                                  className="relative z-10 w-[88%] h-[88%] object-contain drop-shadow-md transition-all duration-500 group-hover/card:scale-110 group-hover/card:drop-shadow-xl"
                                   onError={() => handleImgError(child.label)}
                                 />
                               ) : (
@@ -229,17 +234,15 @@ const Navbar = () => {
                                   {child.label.substring(0, 2)}
                                 </span>
                               )}
-                              {/* Hover glow */}
-                              <div className="absolute inset-0 bg-accent/[0.03] opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 rounded-xl" />
                             </div>
 
                             {/* Label */}
-                            <span className="text-[11px] font-semibold text-foreground/70 group-hover/card:text-accent text-center leading-tight transition-colors duration-200 line-clamp-2">
+                            <span className="text-[11px] font-semibold text-foreground/75 group-hover/card:text-accent text-center leading-tight transition-colors duration-200 line-clamp-2">
                               {child.label}
                             </span>
 
                             {/* External icon */}
-                            <ExternalLink className="absolute top-2.5 right-2.5 w-3 h-3 text-muted-foreground/0 group-hover/card:text-accent/40 transition-all duration-300" />
+                            <ExternalLink className="absolute top-2 right-2 w-3 h-3 text-muted-foreground/0 group-hover/card:text-accent/60 transition-all duration-300" />
                           </a>
                         ))}
                       </div>
