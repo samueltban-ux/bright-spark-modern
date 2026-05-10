@@ -140,9 +140,11 @@ const Navbar = () => {
   return (
     <nav className={`sticky top-0 z-50 transition-all duration-500 ${
       scrolled 
-        ? "bg-card/95 backdrop-blur-2xl shadow-xl shadow-foreground/[0.04] border-b border-border/40" 
-        : "bg-card/70 backdrop-blur-xl border-b border-border/20"
+        ? "bg-card/95 backdrop-blur-2xl shadow-xl shadow-foreground/[0.06] border-b border-border/40" 
+        : "bg-card/80 backdrop-blur-xl border-b border-border/20"
     }`}>
+      {/* Top accent line */}
+      <div className="h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
       <div className="container mx-auto flex items-center justify-between py-2.5 px-4">
         <a href="#" className="flex items-center gap-3 group">
           <img
@@ -153,7 +155,7 @@ const Navbar = () => {
         </a>
 
         {/* Desktop nav */}
-        <div className="hidden lg:flex items-center gap-0">
+        <div className="hidden lg:flex items-center gap-1 bg-muted/30 border border-border/30 rounded-full px-1.5 py-1 shadow-inner shadow-foreground/[0.02]">
           {navItems.map((item) => (
             <div
               key={item.label}
@@ -163,20 +165,17 @@ const Navbar = () => {
             >
               <a
                 href={item.href}
-                className={`relative flex items-center gap-1.5 px-3.5 py-2 text-[10.5px] font-bold tracking-[0.08em] uppercase rounded-lg transition-all duration-300 ${
+                className={`relative flex items-center gap-1.5 px-3.5 py-1.5 text-[10.5px] font-bold tracking-[0.08em] uppercase rounded-full transition-all duration-300 ${
                   openDropdown === item.label
-                    ? "text-accent"
-                    : "text-foreground/55 hover:text-foreground/90"
+                    ? "text-accent-foreground bg-accent shadow-md shadow-accent/30"
+                    : "text-foreground/60 hover:text-foreground hover:bg-background/70"
                 }`}
               >
                 {item.label}
                 {item.children && (
-                  <ChevronDown className={`w-3 h-3 opacity-40 transition-transform duration-300 ${
-                    openDropdown === item.label ? "rotate-180 opacity-80" : ""
+                  <ChevronDown className={`w-3 h-3 opacity-60 transition-transform duration-300 ${
+                    openDropdown === item.label ? "rotate-180 opacity-100" : ""
                   }`} />
-                )}
-                {openDropdown === item.label && item.children && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-accent rounded-full" />
                 )}
               </a>
 
