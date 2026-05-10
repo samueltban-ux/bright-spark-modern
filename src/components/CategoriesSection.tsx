@@ -95,8 +95,8 @@ const CategoriesSection = () => {
                 />
               </div>
 
-              {/* Bottom gradient */}
-              <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[hsl(var(--navy-dark))] via-[hsl(var(--navy-dark)/0.9)] to-transparent" />
+              {/* Bottom gradient — subtle, only behind text */}
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[hsl(var(--navy-dark))] to-transparent" />
 
               {/* Arrow */}
               <div className="absolute top-4 right-4 w-9 h-9 rounded-lg bg-primary-foreground/0 group-hover:bg-accent/15 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
