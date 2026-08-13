@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef, MouseEvent } from "react";
-import { ChevronLeft, ChevronRight, ArrowRight, Sparkles, Zap } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight, Sparkles, Zap, ChevronDown } from "lucide-react";
 import hifuContlexSense from "@/assets/hifu-contlex-sense.png";
 import hifu360SmartMax from "@/assets/hifu-360-smart-max.png";
 import MagneticButton from "@/components/MagneticButton";
@@ -114,10 +114,10 @@ const HeroSection = () => {
           key={i}
           className={`absolute inset-0 transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
             i === current
-              ? "opacity-100 translate-x-0"
+              ? "opacity-100 translate-x-0 blur-0"
               : i > current
-              ? "opacity-0 translate-x-[5%]"
-              : "opacity-0 -translate-x-[5%]"
+              ? "opacity-0 translate-x-[5%] blur-[2px]"
+              : "opacity-0 -translate-x-[5%] blur-[2px]"
           }`}
         >
           <div className="absolute inset-0 flex items-center">
@@ -125,47 +125,54 @@ const HeroSection = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 {/* Text content */}
                 <div className={`transition-all duration-700 delay-200 ${i === current ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="flex items-center gap-2 px-3 py-1.5 bg-accent/10 border border-accent/20 rounded-full">
-                      <Zap className="w-3 h-3 text-accent" />
-                      <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-accent">
-                        {slide.badge}
-                      </span>
+                  <div className="relative p-6 md:p-8 lg:p-10 rounded-3xl overflow-hidden">
+                    {/* Subtle readability panel */}
+                    <div className="absolute inset-0 bg-navy-dark/30 backdrop-blur-2xl rounded-3xl ring-1 ring-primary-foreground/5" />
+
+                    <div className="relative z-10">
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-accent/10 border border-accent/20 rounded-full">
+                          <Zap className="w-3 h-3 text-accent" />
+                          <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-accent">
+                            {slide.badge}
+                          </span>
+                        </div>
+                      </div>
+
+                      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-primary-foreground mb-4 leading-[1.02] tracking-tight">
+                        {slide.title.split(' ').map((word, wi) => (
+                          <span key={wi}>
+                            {wi === 0 ? (
+                              <span className="text-gradient">{word}</span>
+                            ) : (
+                              <span> {word}</span>
+                            )}
+                          </span>
+                        ))}
+                      </h1>
+                      <p className="text-lg md:text-xl text-primary-foreground/80 mb-3 font-light tracking-wide">
+                        {slide.subtitle}
+                      </p>
+                      <p className="text-primary-foreground/50 mb-10 text-sm md:text-base max-w-lg leading-relaxed">
+                        {slide.desc}
+                      </p>
+
+                      <div className="flex flex-wrap items-center gap-3">
+                        <MagneticButton
+                          href={slide.link}
+                          className="group items-center gap-3 px-7 py-3.5 bg-accent text-accent-foreground font-semibold rounded-xl hover:brightness-110 shadow-lg shadow-accent/20 hover:shadow-xl hover:shadow-accent/30 text-sm"
+                        >
+                          Zistiť viac
+                          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                        </MagneticButton>
+                        <a
+                          href="#kontakt"
+                          className="inline-flex items-center gap-2 px-6 py-3.5 text-primary-foreground/60 font-medium hover:text-primary-foreground border border-primary-foreground/10 hover:border-primary-foreground/20 rounded-xl transition-all text-sm"
+                        >
+                          Kontaktujte nás
+                        </a>
+                      </div>
                     </div>
-                  </div>
-
-                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-primary-foreground mb-4 leading-[1.02] tracking-tight">
-                    {slide.title.split(' ').map((word, wi) => (
-                      <span key={wi}>
-                        {wi === 0 ? (
-                          <span className="text-gradient">{word}</span>
-                        ) : (
-                          <span> {word}</span>
-                        )}
-                      </span>
-                    ))}
-                  </h1>
-                  <p className="text-lg md:text-xl text-primary-foreground/70 mb-3 font-light tracking-wide">
-                    {slide.subtitle}
-                  </p>
-                  <p className="text-primary-foreground/40 mb-10 text-sm md:text-base max-w-lg leading-relaxed">
-                    {slide.desc}
-                  </p>
-
-                  <div className="flex flex-wrap items-center gap-3">
-                    <MagneticButton
-                      href={slide.link}
-                      className="group items-center gap-3 px-7 py-3.5 bg-accent text-accent-foreground font-semibold rounded-xl hover:brightness-110 shadow-lg shadow-accent/20 hover:shadow-xl hover:shadow-accent/30 text-sm"
-                    >
-                      Zistiť viac
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </MagneticButton>
-                    <a
-                      href="#kontakt"
-                      className="inline-flex items-center gap-2 px-6 py-3.5 text-primary-foreground/50 font-medium hover:text-primary-foreground border border-primary-foreground/10 hover:border-primary-foreground/20 rounded-xl transition-all text-sm"
-                    >
-                      Kontaktujte nás
-                    </a>
                   </div>
                 </div>
 
@@ -201,6 +208,13 @@ const HeroSection = () => {
                       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-accent/70 shadow-[0_0_10px_hsl(var(--accent))]" />
                     </div>
 
+                    {/* Watermark title */}
+                    <div className="absolute inset-0 flex items-center justify-center select-none pointer-events-none z-0">
+                      <span className="text-[5rem] sm:text-[7rem] md:text-[9rem] lg:text-[12rem] font-black text-primary-foreground/[0.035] whitespace-nowrap leading-none">
+                        {slide.title.split(' ')[0]}
+                      </span>
+                    </div>
+
                     {/* Floating sparkles */}
                     <Sparkles className="absolute -top-4 -right-2 w-5 h-5 text-accent/60 animate-float" style={{ animationDelay: '0.5s' }} />
                     <Sparkles className="absolute bottom-8 -left-6 w-4 h-4 text-accent/40 animate-float-slow" style={{ animationDelay: '1.2s' }} />
@@ -234,6 +248,15 @@ const HeroSection = () => {
       >
         <ChevronRight className="w-4 h-4" />
       </button>
+
+      {/* Scroll indicator */}
+      <a
+        href="#kategorie"
+        className="hidden md:flex absolute bottom-20 left-1/2 -translate-x-1/2 flex-col items-center gap-1 text-primary-foreground/30 hover:text-primary-foreground/60 transition-colors z-20"
+      >
+        <span className="text-[10px] font-semibold tracking-[0.2em] uppercase">Preskúmať</span>
+        <ChevronDown className="w-4 h-4 animate-bounce" />
+      </a>
 
       {/* Slide indicators */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3">
