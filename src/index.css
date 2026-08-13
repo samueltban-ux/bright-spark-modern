@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
 @layer base {
+
   :root {
     --background: 220 20% 97%;
     --foreground: 222 47% 11%;
@@ -29,6 +30,10 @@
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
 
     --border: 220 13% 91%;
     --input: 220 13% 91%;
@@ -88,6 +93,10 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -96,7 +105,12 @@
   h1, h2, h3, h4 {
     font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
   }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-background;
+  }
 }
+
 
 @layer utilities {
   .gradient-navy {
