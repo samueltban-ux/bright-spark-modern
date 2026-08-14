@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin, Instagram, ArrowUpRight, Send, Loader2 } from "luc
 import { useToast } from "@/hooks/use-toast";
 
 const contacts = [
-  { icon: Phone, label: "Telefón", value: "0903 400 896", href: "tel:0903400896" },
+  { icon: Phone, label: "Telefón", value: "0903 400 896", href: "tel:0903400896", highlight: true },
   { icon: Mail, label: "E-mail", value: "info@bsltrade.sk", href: "mailto:info@bsltrade.sk" },
   { icon: MapPin, label: "Adresa", value: "Jastrabinová 39, 82106 Bratislava", href: "#" },
   { icon: Instagram, label: "Instagram", value: "@bsl_trade", href: "https://www.instagram.com/bsl_trade/" },
