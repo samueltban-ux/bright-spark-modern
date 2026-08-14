@@ -162,7 +162,7 @@ const ContactSection = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-primary-foreground font-medium text-sm rounded-lg px-6 py-3 transition-colors disabled:opacity-50"
+              className="w-full flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-sm rounded-lg px-6 py-3 shadow-[0_0_24px_-8px_hsl(var(--accent)/0.5)] hover:shadow-[0_0_32px_-6px_hsl(var(--accent)/0.65)] transition-all disabled:opacity-50"
             >
               {isSubmitting ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
