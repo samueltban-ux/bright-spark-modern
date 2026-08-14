@@ -160,16 +160,20 @@ const HeroSection = () => {
                       <div className="flex flex-wrap items-center gap-3">
                         <MagneticButton
                           href={slide.link}
-                          className="group items-center gap-3 px-7 py-3.5 bg-accent text-accent-foreground font-semibold rounded-xl hover:brightness-110 shadow-lg shadow-accent/20 hover:shadow-xl hover:shadow-accent/30 text-sm"
+                          className="group items-center gap-3 px-7 py-3.5 bg-accent text-accent-foreground font-bold rounded-xl hover:brightness-110 shadow-[0_0_32px_-8px_hsl(var(--accent)/0.55)] hover:shadow-[0_0_40px_-6px_hsl(var(--accent)/0.7)] text-sm hover:scale-[1.02] transition-all"
                         >
                           Zistiť viac
                           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                         </MagneticButton>
                         <a
-                          href="#kontakt"
-                          className="inline-flex items-center gap-2 px-6 py-3.5 text-primary-foreground/60 font-medium hover:text-primary-foreground border border-primary-foreground/10 hover:border-primary-foreground/20 rounded-xl transition-all text-sm"
+                          href="tel:0903400896"
+                          className="inline-flex items-center gap-2 px-5 py-3.5 text-success font-semibold hover:text-success/90 border border-success/30 hover:border-success/50 bg-success/10 hover:bg-success/15 rounded-xl transition-all text-sm"
                         >
-                          Kontaktujte nás
+                          <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75" />
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-success" />
+                          </span>
+                          0903 400 896
                         </a>
                       </div>
                     </div>
