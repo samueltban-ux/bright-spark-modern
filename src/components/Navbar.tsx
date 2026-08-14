@@ -289,7 +289,7 @@ const Navbar = () => {
             </a>
             <a
               href="#kontakt"
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-extrabold tracking-wide uppercase rounded-full bg-accent text-accent-foreground shadow-[0_0_24px_-8px_hsl(var(--accent)/0.55)] hover:shadow-[0_0_32px_-6px_hsl(var(--accent)/0.7)] hover:brightness-110 hover:scale-[1.02] transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-extrabold tracking-wide uppercase whitespace-nowrap rounded-full bg-accent text-accent-foreground shadow-[0_0_24px_-8px_hsl(var(--accent)/0.55)] hover:shadow-[0_0_32px_-6px_hsl(var(--accent)/0.7)] hover:brightness-110 hover:scale-[1.02] transition-all"
             >
               Kontaktovať nás
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
