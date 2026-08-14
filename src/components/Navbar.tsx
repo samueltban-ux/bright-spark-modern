@@ -281,11 +281,18 @@ const Navbar = () => {
               <Search className="w-4 h-4" />
             </button>
             <a
+              href="tel:0903400896"
+              className="hidden xl:inline-flex items-center gap-2 px-4 py-2 text-xs font-extrabold tracking-wide uppercase rounded-full bg-success/15 text-success border border-success/30 hover:bg-success/25 hover:border-success/50 transition-all"
+            >
+              <Phone className="w-3.5 h-3.5" />
+              0903 400 896
+            </a>
+            <a
               href="#kontakt"
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold tracking-wide uppercase rounded-full bg-accent text-accent-foreground shadow-lg shadow-accent/20 hover:shadow-xl hover:shadow-accent/30 hover:brightness-110 transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-extrabold tracking-wide uppercase rounded-full bg-accent text-accent-foreground shadow-[0_0_24px_-8px_hsl(var(--accent)/0.55)] hover:shadow-[0_0_32px_-6px_hsl(var(--accent)/0.7)] hover:brightness-110 hover:scale-[1.02] transition-all"
             >
               Kontaktovať nás
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
             </a>
           </div>
 
