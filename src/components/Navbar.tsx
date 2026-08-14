@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, ChevronDown, ExternalLink, ArrowRight, Search } from "lucide-react";
+import { Menu, X, ChevronDown, ExternalLink, ArrowRight, Search, Phone } from "lucide-react";
 import logoImg from "@/assets/logo.png";
 import hifuContlexSense from "@/assets/hifu-contlex-sense.png";
 import neofraxImg from "@/assets/neofrax.jpg";
