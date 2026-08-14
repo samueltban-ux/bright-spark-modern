@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, ChevronDown, ExternalLink, ArrowRight, Search, Phone } from "lucide-react";
+import { Menu, X, ChevronDown, ExternalLink, ArrowRight, Search } from "lucide-react";
 import logoImg from "@/assets/logo.png";
 import hifuContlexSense from "@/assets/hifu-contlex-sense.png";
 import neofraxImg from "@/assets/neofrax.jpg";
@@ -280,13 +280,6 @@ const Navbar = () => {
             >
               <Search className="w-3.5 h-3.5" />
             </button>
-            <a
-              href="tel:0903400896"
-              className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-extrabold tracking-wide uppercase rounded-full bg-success/15 text-success border border-success/30 hover:bg-success/25 hover:border-success/50 transition-all"
-            >
-              <Phone className="w-3 h-3" />
-              0903 400 896
-            </a>
             <a
               href="#kontakt"
               className="inline-flex items-center gap-1.5 px-4 py-1.5 text-[10px] font-extrabold tracking-wide uppercase whitespace-nowrap rounded-full bg-accent text-accent-foreground shadow-[0_0_20px_-8px_hsl(var(--accent)/0.5)] hover:shadow-[0_0_28px_-6px_hsl(var(--accent)/0.65)] hover:brightness-110 hover:scale-[1.02] transition-all"
