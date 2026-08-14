@@ -78,17 +78,31 @@ const ContactSection = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="group relative rounded-xl p-6 bg-primary-foreground/[0.03] border border-primary-foreground/[0.06] hover:bg-primary-foreground/[0.06] hover:border-accent/15 transition-all duration-300 overflow-hidden"
+                className={`group relative rounded-xl p-6 transition-all duration-300 overflow-hidden ${
+                  item.highlight
+                    ? "bg-success/10 border border-success/30 hover:bg-success/15 hover:border-success/50 shadow-[0_0_24px_-10px_hsl(var(--success)/0.35)]"
+                    : "bg-primary-foreground/[0.03] border border-primary-foreground/[0.06] hover:bg-primary-foreground/[0.06] hover:border-accent/15"
+                }`}
               >
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/0 group-hover:via-accent/30 to-transparent transition-all duration-500" />
+                <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent to-transparent transition-all duration-500 ${
+                  item.highlight ? "via-success/40 group-hover:via-success/70" : "via-accent/0 group-hover:via-accent/30"
+                }`} />
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center group-hover:bg-accent/15 transition-colors">
-                    <item.icon className="w-4 h-4 text-accent" />
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
+                    item.highlight ? "bg-success/15 group-hover:bg-success/25" : "bg-accent/10 group-hover:bg-accent/15"
+                  }`}>
+                    <item.icon className={`w-4 h-4 ${item.highlight ? "text-success" : "text-accent"}`} />
                   </div>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-primary-foreground/15 group-hover:text-accent transition-colors" />
+                  <ArrowUpRight className={`w-3.5 h-3.5 transition-colors ${
+                    item.highlight ? "text-success/40 group-hover:text-success" : "text-primary-foreground/15 group-hover:text-accent"
+                  }`} />
                 </div>
-                <p className="text-[9px] text-primary-foreground/35 uppercase tracking-[0.2em] font-medium mb-1">{item.label}</p>
-                <p className="text-primary-foreground text-sm font-medium leading-snug">{item.value}</p>
+                <p className={`text-[9px] uppercase tracking-[0.2em] font-medium mb-1 ${
+                  item.highlight ? "text-success/60" : "text-primary-foreground/35"
+                }`}>{item.label}</p>
+                <p className={`text-sm font-bold leading-snug ${
+                  item.highlight ? "text-success-foreground" : "text-primary-foreground"
+                }`}>{item.value}</p>
               </a>
             ))}
           </div>
