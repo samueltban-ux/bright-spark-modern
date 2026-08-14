@@ -272,27 +272,27 @@ const Navbar = () => {
           </div>
 
           {/* Right actions */}
-          <div className="hidden lg:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-1.5">
             <button
               type="button"
               aria-label="Vyhľadávanie"
-              className="p-2.5 rounded-full text-foreground/50 hover:text-foreground hover:bg-muted/50 transition-colors"
+              className="p-2 rounded-full text-foreground/50 hover:text-foreground hover:bg-muted/50 transition-colors"
             >
-              <Search className="w-4 h-4" />
+              <Search className="w-3.5 h-3.5" />
             </button>
             <a
               href="tel:0903400896"
-              className="hidden xl:inline-flex items-center gap-2 px-4 py-2 text-xs font-extrabold tracking-wide uppercase rounded-full bg-success/15 text-success border border-success/30 hover:bg-success/25 hover:border-success/50 transition-all"
+              className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-extrabold tracking-wide uppercase rounded-full bg-success/15 text-success border border-success/30 hover:bg-success/25 hover:border-success/50 transition-all"
             >
-              <Phone className="w-3.5 h-3.5" />
+              <Phone className="w-3 h-3" />
               0903 400 896
             </a>
             <a
               href="#kontakt"
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-extrabold tracking-wide uppercase whitespace-nowrap rounded-full bg-accent text-accent-foreground shadow-[0_0_24px_-8px_hsl(var(--accent)/0.55)] hover:shadow-[0_0_32px_-6px_hsl(var(--accent)/0.7)] hover:brightness-110 hover:scale-[1.02] transition-all"
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 text-[10px] font-extrabold tracking-wide uppercase whitespace-nowrap rounded-full bg-accent text-accent-foreground shadow-[0_0_20px_-8px_hsl(var(--accent)/0.5)] hover:shadow-[0_0_28px_-6px_hsl(var(--accent)/0.65)] hover:brightness-110 hover:scale-[1.02] transition-all"
             >
               Kontaktovať nás
-              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
             </a>
           </div>
 
