@@ -230,20 +230,20 @@ const Navbar = () => {
                             <a
                               key={child.label}
                               href={child.href}
-                              className="group/card relative flex flex-col items-center p-3.5 rounded-2xl border border-border/40 bg-gradient-to-b from-background/80 to-background/30 hover:from-accent/[0.06] hover:to-background/40 hover:border-accent/40 transition-all duration-300 hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-1 overflow-hidden"
+                              className="group/card relative flex flex-col items-center p-2.5 rounded-2xl border border-border/40 bg-gradient-to-b from-background/80 to-background/30 hover:from-accent/[0.06] hover:to-background/40 hover:border-accent/40 transition-all duration-300 hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-1 overflow-hidden"
                             >
                               {/* Top accent bar on hover */}
                               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-accent rounded-b-full group-hover/card:w-1/2 transition-all duration-300" />
 
                               {/* Image container */}
-                              <div className="relative w-full aspect-square rounded-xl bg-gradient-to-br from-muted/40 via-background/20 to-muted/10 flex items-center justify-center mb-2.5 overflow-hidden ring-1 ring-border/20 group-hover/card:ring-accent/30 transition-all duration-300">
+                              <div className="relative w-full aspect-square rounded-xl bg-gradient-to-br from-muted/40 via-background/20 to-muted/10 flex items-center justify-center mb-1.5 overflow-hidden ring-1 ring-border/20 group-hover/card:ring-accent/30 transition-all duration-300">
                                 {/* Radial glow */}
                                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsl(var(--accent)/0.12),transparent_70%)] opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
                                 {child.image && !imgErrors.has(child.label) ? (
                                   <img
                                     src={child.image}
                                     alt={child.label}
-                                    className="relative z-10 w-full h-full object-contain drop-shadow-md transition-all duration-500 scale-[1.14] group-hover/card:scale-[1.26] group-hover/card:drop-shadow-xl"
+                                    className="relative z-10 w-full h-full object-contain drop-shadow-md transition-all duration-500 group-hover/card:drop-shadow-xl group-hover/card:scale-[1.03]"
                                     onError={() => handleImgError(child.label)}
                                   />
                                 ) : (
@@ -254,7 +254,7 @@ const Navbar = () => {
                               </div>
 
                               {/* Label */}
-                              <span className="text-[11px] font-semibold text-foreground/75 group-hover/card:text-accent text-center leading-tight transition-colors duration-200 line-clamp-2">
+                              <span className="text-[10px] font-semibold text-foreground/75 group-hover/card:text-accent text-center leading-tight transition-colors duration-200 line-clamp-2">
                                 {child.label}
                               </span>
 
