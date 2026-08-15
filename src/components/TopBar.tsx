@@ -8,15 +8,15 @@ const TopBar = () => {
         <div className="flex items-center gap-3">
           <a
             href="tel:0903400896"
-            className="group relative flex items-center gap-1.5 pl-1 pr-3 py-1 rounded-full bg-gradient-to-r from-accent/20 to-accent/10 border border-accent/40 hover:border-accent/60 hover:from-accent/30 hover:to-accent/20 transition-all duration-300 shadow-[0_0_16px_-6px_hsl(var(--accent)/0.3)] hover:shadow-[0_0_24px_-4px_hsl(var(--accent)/0.45)]"
+            className="group relative flex items-center gap-1.5 pl-1 pr-3.5 py-1.5 rounded-full bg-gradient-to-r from-accent/35 via-accent/20 to-accent/10 border border-accent/60 hover:border-accent hover:from-accent/45 hover:via-accent/25 hover:to-accent/15 transition-all duration-300 shadow-[0_0_20px_-5px_hsl(var(--accent)/0.45)] hover:shadow-[0_0_30px_-2px_hsl(var(--accent)/0.65)] ring-1 ring-inset ring-accent/20 hover:ring-accent/40"
           >
-            <span className="relative flex items-center justify-center w-5 h-5 rounded-full bg-success/20">
-              <span className="absolute inline-flex h-2 w-2 rounded-full bg-success opacity-80 animate-ping" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
+            <span className="relative flex items-center justify-center w-6 h-6 rounded-full bg-success/20 ring-1 ring-success/30">
+              <span className="absolute inline-flex h-2.5 w-2.5 rounded-full bg-success opacity-80 animate-ping" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
             </span>
-            <Phone className="w-2.5 h-2.5 text-accent/80 -mr-0.5" />
-            <span className="font-bold tracking-wide text-accent uppercase text-[10px]">Potrebujete poradiť?</span>
-            <span className="text-primary-foreground font-extrabold text-xs tracking-wide">0903 400 896</span>
+            <Phone className="w-3 h-3 text-accent -mr-0.5" />
+            <span className="font-black tracking-wider text-accent uppercase text-[11px]">Potrebujete poradiť?</span>
+            <span className="text-primary-foreground font-black text-sm tracking-wide">0903 400 896</span>
           </a>
           <span className="hidden sm:inline-flex items-center gap-1.5 text-success/90 font-semibold bg-success/10 px-2.5 py-1 rounded-full border border-success/20">
             <span className="relative flex h-1.5 w-1.5">

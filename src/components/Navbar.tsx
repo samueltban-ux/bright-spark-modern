@@ -243,7 +243,7 @@ const Navbar = () => {
                                   <img
                                     src={child.image}
                                     alt={child.label}
-                                    className="relative z-10 w-full h-full object-contain drop-shadow-md transition-all duration-500 group-hover/card:scale-110 group-hover/card:drop-shadow-xl p-1"
+                                    className="relative z-10 w-full h-full object-contain drop-shadow-md transition-all duration-500 scale-[1.14] group-hover/card:scale-[1.26] group-hover/card:drop-shadow-xl"
                                     onError={() => handleImgError(child.label)}
                                   />
                                 ) : (
