@@ -169,7 +169,7 @@ const Navbar = () => {
 
           {/* Desktop nav */}
           <div className="hidden xl:flex items-center gap-1 bg-muted/30 border border-border/30 rounded-full px-1.5 py-1 shadow-inner shadow-foreground/[0.02]">
-            {navItems.map((item) => (
+            {navItems.map((item, index) => (
               <div
                 key={item.label}
                 className="relative"
@@ -198,7 +198,7 @@ const Navbar = () => {
 
                 {/* Full-width mega dropdown */}
                 {item.children && openDropdown === item.label && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50">
+                  <div className={`absolute top-full pt-2 z-50 ${index >= 4 ? "right-0" : "left-0"}`}>
                     <div className="bg-card/[0.98] backdrop-blur-3xl rounded-2xl border border-border/40 shadow-2xl shadow-foreground/[0.08] max-w-[720px] w-[720px]">
                       {/* Accent line */}
                       <div className="h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
