@@ -8,8 +8,8 @@ const items = [
   },
   {
     icon: Users,
-    value: "500+",
-    label: "spokojných klientov",
+    value: "800+",
+    label: "spokojných kliník a salónov po Česku a Slovensku",
   },
   {
     icon: Wrench,
