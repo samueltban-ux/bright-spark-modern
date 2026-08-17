@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BSL Trade — Prémiové kozmetické a estetické prístroje pre salóny</title>
+<meta name="description" content="Už 21+ rokov dodávame prémiové kozmetické a estetické prístroje do najlepších salónov a kliník v SR a ČR. Pozrite si mapu úspechu." />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy:   { 950: '#050B18', 900: '#0A1428', 800: '#0F1E3D', 700: '#16305C', 600: '#1E4585' },
+          accent: { DEFAULT: '#2E7DF6', soft: '#5C9DFF' },
+          gold:   '#C8A96A',
+          success:{ DEFAULT: '#16B364', dark: '#0E8A4B' }
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          body: ['Inter', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+
+<!-- Leaflet + MarkerCluster -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; }
+  .font-display { font-family: 'Space Grotesk', sans-serif; }
+
+  /* jemný mesh / dot grid podklad */
+  .mesh {
+    background:
+      radial-gradient(60% 60% at 15% 10%, rgba(46,125,246,.28) 0%, transparent 60%),
+      radial-gradient(50% 50% at 85% 20%, rgba(22,179,100,.16) 0%, transparent 60%),
+      radial-gradient(60% 60% at 50% 100%, rgba(30,69,133,.35) 0%, transparent 65%),
+      #050B18;
+  }
+  .dotgrid {
+    background-image: radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+  .glass {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.10);
+    backdrop-filter: blur(14px);
+  }
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* Mapa */
+  #map { height: 520px; width: 100%; border-radius: 1rem; z-index: 0; }
+  @media (max-width: 640px) { #map { height: 420px; } }
+  .leaflet-container { background: #0A1428; font-family: 'Inter', sans-serif; }
+  .leaflet-popup-content-wrapper {
+    background: #0A1428; color: #fff; border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.14); box-shadow: 0 20px 50px rgba(0,0,0,.5);
+  }
+  .leaflet-popup-tip { background: #0A1428; border: 1px solid rgba(255,255,255,.14); }
+  .leaflet-popup-content { margin: 14px 16px; }
+  .leaflet-popup-close-button { color: rgba(255,255,255,.6) !important; }
+
+  /* Zelené bodky */
+  .bsl-dot {
+    width: 16px; height: 16px; border-radius: 999px;
+    background: #16B364; border: 2px solid rgba(255,255,255,.85);
+    box-shadow: 0 0 0 6px rgba(22,179,100,.22), 0 4px 10px rgba(0,0,0,.4);
+  }
+  /* Clustery */
+  .bsl-cluster {
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 700; font-family: 'Space Grotesk', sans-serif;
+    background: rgba(22,179,100,.92); border: 2px solid rgba(255,255,255,.8);
+    border-radius: 999px; box-shadow: 0 0 0 8px rgba(22,179,100,.20), 0 8px 20px rgba(0,0,0,.45);
+  }
+</style>
+</head>
+
+<body class="bg-navy-950 text-white antialiased selection:bg-accent/40">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-[500]">
+  <div class="bg-navy-950/80 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
+      <a href="#top" class="font-display text-xl font-bold tracking-tight">
+        BSL<span class="text-accent">Trade</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm text-white/70">
+        <a href="#mapa" class="hover:text-white transition">Mapa úspechu</a>
+        <a href="#pribehy" class="hover:text-white transition">Príbehy</a>
+        <a href="#kontakt" class="hover:text-white transition">Kontakt</a>
+      </nav>
+      <a href="#kontakt" class="rounded-full bg-success hover:bg-success-dark transition px-5 py-2.5 text-sm font-semibold shadow-lg shadow-success/25">
+        Nezáväzná konzultácia
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="relative mesh pt-32 pb-20 md:pt-44 md:pb-28 overflow-hidden">
+  <div class="absolute inset-0 dotgrid opacity-60"></div>
+  <div class="relative max-w-7xl mx-auto px-5">
+    <div class="max-w-4xl">
+      <span class="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs tracking-widest uppercase text-white/70">
+        <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
+        Oficiálny dodávateľ pre SR a ČR
+      </span>
+      <h1 class="font-display mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05]">
+        Dodávame technológie,<br />
+        na ktorých stoja<br />
+        <span class="bg-gradient-to-r from-accent-soft via-white to-gold bg-clip-text text-transparent">najlepšie salóny</span>
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-white/65 max-w-2xl leading-relaxed">
+        Prémiové kozmetické a estetické prístroje s certifikáciou, zaškolením a servisom.
+        Vyberieme technológiu, ktorá vám reálne zarobí — nie takú, ktorá bude stáť v rohu.
+      </p>
+      <div class="mt-9 flex flex-col sm:flex-row gap-4">
+        <a href="#kontakt" class="rounded-full bg-success hover:bg-success-dark transition px-8 py-4 font-semibold shadow-xl shadow-success/25 text-center">
+          Chcem nezáväznú konzultáciu
+        </a>
+        <a href="#mapa" class="rounded-full glass hover:bg-white/10 transition px-8 py-4 font-semibold text-center">
+          Pozrieť mapu úspechu
+        </a>
+      </div>
+    </div>
+
+    <!-- LIVE COUNTER -->
+    <div class="mt-14 md:mt-20 glass rounded-3xl p-6 sm:p-10 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+      <div class="text-center px-4 py-6 sm:py-0">
+        <div class="font-display text-4xl md:text-6xl font-bold text-white">
+          <span class="counter" data-target="21">0</span><span class="text-accent">+</span>
+        </div>
+        <p class="mt-2 text-sm md:text-base text-white/60 tracking-wide">rokov na trhu</p>
+      </div>
+      <div class="text-center px-4 py-6 sm:py-0">
+        <div class="font-display text-4xl md:text-6xl font-bold text-white">
+          <span class="counter" data-target="450">0</span><span class="text-accent">+</span>
+        </div>
+        <p class="mt-2 text-sm md:text-base text-white/60 tracking-wide">dodaných prístrojov v SR a ČR</p>
+      </div>
+      <div class="text-center px-4 py-6 sm:py-0">
+        <div class="font-display text-4xl md:text-6xl font-bold text-white">
+          <span class="counter" data-target="150000">0</span><span class="text-accent">+</span>
+        </div>
+        <p class="mt-2 text-sm md:text-base text-white/60 tracking-wide">úspešných ošetrení</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MAPA ============ -->
+<section id="mapa" class="relative bg-white text-navy-950 py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="max-w-3xl reveal">
+      <span class="text-xs font-semibold tracking-[0.2em] uppercase text-accent">Mapa úspechu</span>
+      <h2 class="font-display mt-3 text-3xl md:text-5xl font-bold leading-tight">
+        Každá zelená bodka je jeden dodaný prístroj
+      </h2>
+      <p class="mt-4 text-lg text-navy-950/60">
+        Priblížte si mapu a pozrite sa, kde všade už naše technológie pracujú pre salóny a kliniky
+        po celom Slovensku a Česku.
+      </p>
+    </div>
+
+    <div class="mt-10 reveal">
+      <div class="rounded-2xl p-2 bg-navy-950/5 border border-navy-950/10 shadow-2xl shadow-navy-950/10">
+        <div id="map"></div>
+      </div>
+      <div class="mt-4 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-navy-950/55">
+        <span class="flex items-center gap-2">
+          <span class="w-3.5 h-3.5 rounded-full bg-success ring-4 ring-success/20"></span>
+          Dodaný prístroj
+        </span>
+        <span class="flex items-center gap-2">
+          <span class="w-5 h-5 rounded-full bg-success/90 text-white text-[10px] font-bold grid place-items-center">9</span>
+          Zhluk — kliknutím priblížite
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRÍBEHY ============ -->
+<section id="pribehy" class="relative bg-navy-900 py-20 md:py-28 overflow-hidden">
+  <div class="absolute inset-0 dotgrid opacity-40"></div>
+  <div class="relative max-w-7xl mx-auto px-5">
+    <div class="max-w-3xl reveal">
+      <span class="text-xs font-semibold tracking-[0.2em] uppercase text-accent-soft">Príbehy úspechu z terénu</span>
+      <h2 class="font-display mt-3 text-3xl md:text-5xl font-bold leading-tight">
+        Za každou bodkou je konkrétny salón
+      </h2>
+      <p class="mt-4 text-lg text-white/60">
+        Vybrané kliniky a salóny, ktorým sme dodali technológiu — a ktoré s ňou rástli.
+      </p>
+    </div>
+
+    <div id="stories-grid" class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </div>
+</section>
+
+<!-- ============ CTA FORMULÁR ============ -->
+<section id="kontakt" class="relative mesh py-20 md:py-28 overflow-hidden">
+  <div class="absolute inset-0 dotgrid opacity-50"></div>
+  <div class="relative max-w-4xl mx-auto px-5">
+    <div class="text-center reveal">
+      <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight">
+        Chcem svietiť na mape
+      </h2>
+      <p class="mt-5 text-lg md:text-xl text-white/65 max-w-2xl mx-auto">
+        Pridajte sa k elite. Pomôžeme vám vybrať technológiu, ktorá posunie váš salón na novú úroveň.
+      </p>
+    </div>
+
+    <form id="contact-form" class="mt-12 glass rounded-3xl p-6 sm:p-10 reveal" novalidate>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label class="block text-sm font-medium text-white/70 mb-2" for="name">Meno a priezvisko *</label>
+          <input id="name" name="name" type="text" required placeholder="Jana Nováková"
+            class="w-full rounded-xl bg-white/5 border border-white/12 px-4 py-3.5 text-white placeholder-white/30 outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-white/70 mb-2" for="salon">Názov salónu / kliniky *</label>
+          <input id="salon" name="salon" type="text" required placeholder="Beauty Studio"
+            class="w-full rounded-xl bg-white/5 border border-white/12 px-4 py-3.5 text-white placeholder-white/30 outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-white/70 mb-2" for="city">Mesto *</label>
+          <input id="city" name="city" type="text" required placeholder="Bratislava"
+            class="w-full rounded-xl bg-white/5 border border-white/12 px-4 py-3.5 text-white placeholder-white/30 outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-white/70 mb-2" for="phone">Telefónne číslo *</label>
+          <input id="phone" name="phone" type="tel" required placeholder="+421 900 000 000"
+            class="w-full rounded-xl bg-white/5 border border-white/12 px-4 py-3.5 text-white placeholder-white/30 outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition" />
+        </div>
+        <div class="sm:col-span-2">
+          <label class="block text-sm font-medium text-white/70 mb-2" for="email">E-mail *</label>
+          <input id="email" name="email" type="email" required placeholder="jana@salon.sk"
+            class="w-full rounded-xl bg-white/5 border border-white/12 px-4 py-3.5 text-white placeholder-white/30 outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition" />
+        </div>
+        <div class="sm:col-span-2">
+          <label class="block text-sm font-medium text-white/70 mb-2" for="message">Správa</label>
+          <textarea id="message" name="message" rows="4" placeholder="Napíšte nám, o aké ošetrenia máte záujem…"
+            class="w-full rounded-xl bg-white/5 border border-white/12 px-4 py-3.5 text-white placeholder-white/30 outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition resize-none"></textarea>
+        </div>
+      </div>
+
+      <button type="submit"
+        class="mt-8 w-full rounded-xl bg-success hover:bg-success-dark active:scale-[.99] transition-all px-8 py-4 text-lg font-bold shadow-xl shadow-success/30 hover:shadow-success/50">
+        Odoslať nezáväznú žiadosť
+      </button>
+      <p id="form-status" class="mt-4 text-center text-sm text-white/60"></p>
+      <p class="mt-2 text-center text-xs text-white/35">
+        Odoslaním súhlasíte so spracovaním osobných údajov. Ozveme sa do 24 hodín.
+      </p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-navy-950 border-t border-white/10 py-10">
+  <div class="max-w-7xl mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/45">
+    <span class="font-display text-white font-bold">BSL<span class="text-accent">Trade</span></span>
+    <span>© <span id="year"></span> BSL Trade — 21+ rokov na trhu</span>
+    <a href="https://www.instagram.com/bsl_trade/" target="_blank" rel="noopener" class="hover:text-white transition">Instagram</a>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   1) LIVE COUNTER
+   ============================================================ */
+(function () {
+  var counters = document.querySelectorAll('.counter');
+  var DURATION = 2600;
+
+  function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+
+  function run(el) {
+    var target = parseInt(el.dataset.target, 10);
+    var start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / DURATION, 1);
+      var val = Math.floor(easeOutExpo(p) * target);
+      el.textContent = val.toLocaleString('sk-SK');
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = target.toLocaleString('sk-SK');
+    }
+    requestAnimationFrame(step);
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { run(e.target); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(function (c) { io.observe(c); });
+})();
+
+/* ============================================================
+   2) SCROLL REVEAL
+   ============================================================ */
+(function () {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+})();
+
+/* ============================================================
+   3) DÁTA — dodané prístroje (doplň si ďalšie riadky)
+   ============================================================ */
+var INSTALLATIONS = [
+  { name: 'Beauty Clinic Bratislava', city: 'Bratislava', device: 'QUATTRO-MAX 450', lat: 48.1486, lng: 17.1077 },
+  { name: 'Estetické štúdio Nitra',   city: 'Nitra',      device: 'CONTLEX SENSE',   lat: 48.3069, lng: 18.0864 },
+  { name: 'Laser Center Košice',      city: 'Košice',     device: 'Q-MASTER',        lat: 48.7164, lng: 21.2611 },
+  { name: 'Salón Žilina',             city: 'Žilina',     device: 'NEOFRAX',         lat: 49.2231, lng: 18.7394 },
+  { name: 'Klinika Banská Bystrica',  city: 'B. Bystrica',device: 'ELLYSE SENSE',    lat: 48.7395, lng: 19.1530 },
+  { name: 'Studio Trnava',            city: 'Trnava',     device: 'SOLRAY',          lat: 48.3774, lng: 17.5875 },
+  { name: 'Beauty Prešov',            city: 'Prešov',     device: 'BIOXEL',          lat: 48.9975, lng: 21.2394 },
+  { name: 'Kosmetika Praha 1',        city: 'Praha',      device: 'QUATTRO-MAX 450', lat: 50.0755, lng: 14.4378 },
+  { name: 'Estetika Praha 4',         city: 'Praha',      device: 'CONTLEX SENSE',   lat: 50.0400, lng: 14.4400 },
+  { name: 'Klinika Brno',             city: 'Brno',       device: 'Q-MASTER',        lat: 49.1951, lng: 16.6068 },
+  { name: 'Studio Ostrava',           city: 'Ostrava',    device: 'NEOFRAX',         lat: 49.8209, lng: 18.2625 },
+  { name: 'Beauty Plzeň',             city: 'Plzeň',      device: 'SOLRAY',          lat: 49.7384, lng: 13.3736 },
+  { name: 'Salon Olomouc',            city: 'Olomouc',    device: 'ELLYSE SENSE',    lat: 49.5938, lng: 17.2509 },
+  { name: 'Klinika Hradec Králové',   city: 'Hradec Králové', device: 'BIOXEL',      lat: 50.2092, lng: 15.8328 },
+  { name: 'Estetika Trenčín',         city: 'Trenčín',    device: 'QUATTRO-MAX 450', lat: 48.8945, lng: 18.0444 }
+];
+
+/* ============================================================
+   4) MAPA — Leaflet + MarkerCluster
+   ============================================================ */
+(function () {
+  if (typeof L === 'undefined') return;
+
+  var map = L.map('map', { scrollWheelZoom: false, zoomControl: true })
+             .setView([49.30, 17.60], 6);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; OpenStreetMap &copy; CARTO',
+    subdomains: 'abcd',
+    maxZoom: 19
+  }).addTo(map);
+
+  var dotIcon = L.divIcon({
+    html: '<div class="bsl-dot"></div>',
+    className: '',
+    iconSize: [16, 16],
+    iconAnchor: [8, 8]
+  });
+
+  var clusters = L.markerClusterGroup({
+    showCoverageOnHover: false,
+    spiderfyOnMaxZoom: true,
+    maxClusterRadius: 55,
+    iconCreateFunction: function (cluster) {
+      var n = cluster.getChildCount();
+      var size = n < 10 ? 40 : (n < 25 ? 50 : 60);
+      return L.divIcon({
+        html: '<div class="bsl-cluster" style="width:' + size + 'px;height:' + size + 'px;font-size:' + (size / 3) + 'px">' + n + '</div>',
+        className: '',
+        iconSize: [size, size]
+      });
+    }
+  });
+
+  INSTALLATIONS.forEach(function (item) {
+    var popup =
+      '<div style="min-width:200px">' +
+        '<div style="font-family:\'Space Grotesk\',sans-serif;font-weight:700;font-size:15px;line-height:1.3">' + item.name + '</div>' +
+        '<div style="font-size:12px;color:rgba(255,255,255,.55);margin-top:2px">' + item.city + '</div>' +
+        '<div style="margin-top:10px;display:inline-block;padding:5px 10px;border-radius:999px;background:rgba(22,179,100,.18);border:1px solid rgba(22,179,100,.45);color:#4ADE80;font-size:11px;font-weight:600;letter-spacing:.04em">' +
+          item.device +
+        '</div>' +
+      '</div>';
+
+    clusters.addLayer(L.marker([item.lat, item.lng], { icon: dotIcon }).bindPopup(popup));
+  });
+
+  map.addLayer(clusters);
+  map.on('click', function () { map.scrollWheelZoom.enable(); });
+  map.on('mouseout', function () { map.scrollWheelZoom.disable(); });
+
+  setTimeout(function () { map.invalidateSize(); }, 300);
+})();
+
+/* ============================================================
+   5) PRÍBEHY ÚSPECHU — karty (recenzie doplníš sem)
+   ============================================================ */
+var STORIES = [
+  { salon: 'Názov salónu', city: 'Mesto', device: 'QUATTRO-MAX 450', note: 'Sem doplníme krátke zhodnotenie z našej strany — aký prístroj sme dodali a ako pomohol salónu rásť.', quote: 'Sem príde priama citácia majiteľky salónu.', author: 'Meno majiteľky' },
+  { salon: 'Názov salónu', city: 'Mesto', device: 'CONTLEX SENSE',   note: 'Sem doplníme krátke zhodnotenie z našej strany — aký prístroj sme dodali a ako pomohol salónu rásť.', quote: 'Sem príde priama citácia majiteľky salónu.', author: 'Meno majiteľky' },
+  { salon: 'Názov salónu', city: 'Mesto', device: 'Q-MASTER',        note: 'Sem doplníme krátke zhodnotenie z našej strany — aký prístroj sme dodali a ako pomohol salónu rásť.', quote: 'Sem príde priama citácia majiteľky salónu.', author: 'Meno majiteľky' }
+];
+
+(function () {
+  var grid = document.getElementById('stories-grid');
+  if (!grid) return;
+
+  grid.innerHTML = STORIES.map(function (s) {
+    return '' +
+      '<article class="reveal group rounded-3xl overflow-hidden border border-white/10 bg-white/[.04] backdrop-blur-xl hover:border-accent/40 transition-all duration-300 hover:-translate-y-1">' +
+        '<div class="relative h-52 bg-gradient-to-br from-navy-700 to-navy-950 grid place-items-center">' +
+          '<div class="absolute inset-0 dotgrid opacity-30"></div>' +
+          '<div class="relative text-center px-6">' +
+            '<div class="mx-auto w-14 h-14 rounded-full border border-white/20 grid place-items-center text-white/40 text-2xl">✦</div>' +
+            '<p class="mt-3 text-xs uppercase tracking-[.18em] text-white/35">Miesto pre fotku salónu</p>' +
+          '</div>' +
+          '<span class="absolute top-4 left-4 rounded-full bg-success/20 border border-success/40 text-[11px] font-semibold text-[#4ADE80] px-3 py-1">' + s.device + '</span>' +
+        '</div>' +
+        '<div class="p-6">' +
+          '<h3 class="font-display text-xl font-bold">' + s.salon + '</h3>' +
+          '<p class="text-sm text-white/45 mt-1">' + s.city + '</p>' +
+          '<p class="mt-4 text-sm leading-relaxed text-white/65">' + s.note + '</p>' +
+          '<blockquote class="mt-5 relative rounded-2xl bg-accent/[.08] border-l-4 border-accent px-5 py-4">' +
+            '<span class="absolute -top-3 left-3 font-display text-5xl text-accent/40 leading-none">“</span>' +
+            '<p class="relative text-sm italic text-white/80 leading-relaxed">' + s.quote + '</p>' +
+            '<footer class="mt-3 text-xs font-semibold text-white/50">— ' + s.author + '</footer>' +
+          '</blockquote>' +
+        '</div>' +
+      '</article>';
+  }).join('');
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  grid.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+})();
+
+/* ============================================================
+   6) FORMULÁR
+   ============================================================ */
+(function () {
+  var form = document.getElementById('contact-form');
+  var status = document.getElementById('form-status');
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var required = ['name', 'salon', 'city', 'phone', 'email'];
+    var ok = true;
+
+    required.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el.value.trim() || (id === 'email' && !/^\S+@\S+\.\S+$/.test(el.value))) {
+        el.classList.add('border-red-500'); ok = false;
+      } else {
+        el.classList.remove('border-red-500');
+      }
+    });
+
+    if (!ok) {
+      status.textContent = 'Prosím, skontrolujte povinné polia.';
+      status.className = 'mt-4 text-center text-sm text-red-400';
+      return;
+    }
+
+    status.textContent = 'Ďakujeme! Vaša žiadosť bola odoslaná — ozveme sa do 24 hodín.';
+    status.className = 'mt-4 text-center text-sm text-[#4ADE80] font-medium';
+    form.reset();
+  });
+})();
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
