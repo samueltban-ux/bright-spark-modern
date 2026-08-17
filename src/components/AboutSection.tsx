@@ -9,7 +9,7 @@ const features = [
 ];
 
 const stats = [
-  { value: "20+", label: "Rokov na trhu" },
+  { value: "21+", label: "Rokov na trhu" },
   { value: "800+", label: "Spokojných kliník a salónov po Česku a Slovensku" },
   { value: "50+", label: "Typov prístrojov" },
 ];

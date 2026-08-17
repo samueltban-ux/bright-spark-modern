@@ -3,7 +3,7 @@ import { Award, Users, Wrench, Crown } from "lucide-react";
 const items = [
   {
     icon: Award,
-    value: "20+",
+    value: "21+",
     label: "rokov na trhu",
   },
   {
