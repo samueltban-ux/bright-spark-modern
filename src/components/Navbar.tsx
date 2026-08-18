@@ -101,7 +101,7 @@ const navItems: NavItem[] = [
       { label: "Elektroterapia", href: "https://www.bsltrade.sk/elektroterapia/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/elektroterapia.png" },
     ],
   },
-  { label: "VIP PROGRAM", href: "/vip-program" },
+  { label: "ANALYZÉRY PLETI", href: "https://www.bsltrade.sk/" },
   { label: "KONTAKT", href: "#kontakt" },
   { label: "MAPA INŠTALÁCIÍ", href: "/bsl-landing.html" },
 ];

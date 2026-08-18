@@ -329,25 +329,105 @@
 })();
 
 /* ============================================================
-   3) DÁTA — dodané prístroje (doplň si ďalšie riadky)
+   3) DÁTA — dodané prístroje
+   Základné mestá + automatické rozloženie do 350 bodov.
+   Konkrétny salón kedykoľvek dopíš do poľa CUSTOM_INSTALLATIONS.
    ============================================================ */
-var INSTALLATIONS = [
-  { name: 'Beauty Clinic Bratislava', city: 'Bratislava', device: 'QUATTRO-MAX 450', lat: 48.1486, lng: 17.1077 },
-  { name: 'Estetické štúdio Nitra',   city: 'Nitra',      device: 'CONTLEX SENSE',   lat: 48.3069, lng: 18.0864 },
-  { name: 'Laser Center Košice',      city: 'Košice',     device: 'Q-MASTER',        lat: 48.7164, lng: 21.2611 },
-  { name: 'Salón Žilina',             city: 'Žilina',     device: 'NEOFRAX',         lat: 49.2231, lng: 18.7394 },
-  { name: 'Klinika Banská Bystrica',  city: 'B. Bystrica',device: 'ELLYSE SENSE',    lat: 48.7395, lng: 19.1530 },
-  { name: 'Studio Trnava',            city: 'Trnava',     device: 'SOLRAY',          lat: 48.3774, lng: 17.5875 },
-  { name: 'Beauty Prešov',            city: 'Prešov',     device: 'BIOXEL',          lat: 48.9975, lng: 21.2394 },
-  { name: 'Kosmetika Praha 1',        city: 'Praha',      device: 'QUATTRO-MAX 450', lat: 50.0755, lng: 14.4378 },
-  { name: 'Estetika Praha 4',         city: 'Praha',      device: 'CONTLEX SENSE',   lat: 50.0400, lng: 14.4400 },
-  { name: 'Klinika Brno',             city: 'Brno',       device: 'Q-MASTER',        lat: 49.1951, lng: 16.6068 },
-  { name: 'Studio Ostrava',           city: 'Ostrava',    device: 'NEOFRAX',         lat: 49.8209, lng: 18.2625 },
-  { name: 'Beauty Plzeň',             city: 'Plzeň',      device: 'SOLRAY',          lat: 49.7384, lng: 13.3736 },
-  { name: 'Salon Olomouc',            city: 'Olomouc',    device: 'ELLYSE SENSE',    lat: 49.5938, lng: 17.2509 },
-  { name: 'Klinika Hradec Králové',   city: 'Hradec Králové', device: 'BIOXEL',      lat: 50.2092, lng: 15.8328 },
-  { name: 'Estetika Trenčín',         city: 'Trenčín',    device: 'QUATTRO-MAX 450', lat: 48.8945, lng: 18.0444 }
+var CITIES = [
+  { city: 'Bratislava', lat: 48.1486, lng: 17.1077, w: 34 },
+  { city: 'Košice', lat: 48.7164, lng: 21.2611, w: 14 },
+  { city: 'Žilina', lat: 49.2231, lng: 18.7394, w: 9 },
+  { city: 'Nitra', lat: 48.3069, lng: 18.0864, w: 9 },
+  { city: 'Trnava', lat: 48.3774, lng: 17.5875, w: 8 },
+  { city: 'Banská Bystrica', lat: 48.7395, lng: 19.1530, w: 8 },
+  { city: 'Prešov', lat: 48.9975, lng: 21.2394, w: 8 },
+  { city: 'Trenčín', lat: 48.8945, lng: 18.0444, w: 7 },
+  { city: 'Poprad', lat: 49.0558, lng: 20.2976, w: 5 },
+  { city: 'Martin', lat: 49.0665, lng: 18.9216, w: 5 },
+  { city: 'Zvolen', lat: 48.5746, lng: 19.1246, w: 4 },
+  { city: 'Michalovce', lat: 48.7544, lng: 21.9190, w: 4 },
+  { city: 'Piešťany', lat: 48.5919, lng: 17.8265, w: 4 },
+  { city: 'Nové Zámky', lat: 47.9861, lng: 18.1610, w: 4 },
+  { city: 'Prievidza', lat: 48.7739, lng: 18.6244, w: 4 },
+  { city: 'Liptovský Mikuláš', lat: 49.0819, lng: 19.6110, w: 3 },
+  { city: 'Humenné', lat: 48.9333, lng: 21.9167, w: 3 },
+  { city: 'Komárno', lat: 47.7639, lng: 18.1292, w: 3 },
+  { city: 'Levice', lat: 48.2167, lng: 18.6069, w: 3 },
+  { city: 'Spišská Nová Ves', lat: 48.9450, lng: 20.5675, w: 3 },
+  { city: 'Ružomberok', lat: 49.0785, lng: 19.3085, w: 3 },
+  { city: 'Dunajská Streda', lat: 47.9925, lng: 17.6153, w: 3 },
+  { city: 'Praha', lat: 50.0755, lng: 14.4378, w: 38 },
+  { city: 'Brno', lat: 49.1951, lng: 16.6068, w: 18 },
+  { city: 'Ostrava', lat: 49.8209, lng: 18.2625, w: 13 },
+  { city: 'Plzeň', lat: 49.7384, lng: 13.3736, w: 10 },
+  { city: 'Olomouc', lat: 49.5938, lng: 17.2509, w: 8 },
+  { city: 'Liberec', lat: 50.7663, lng: 15.0543, w: 7 },
+  { city: 'České Budějovice', lat: 48.9745, lng: 14.4743, w: 7 },
+  { city: 'Hradec Králové', lat: 50.2092, lng: 15.8328, w: 7 },
+  { city: 'Pardubice', lat: 50.0343, lng: 15.7812, w: 6 },
+  { city: 'Zlín', lat: 49.2265, lng: 17.6708, w: 6 },
+  { city: 'Ústí nad Labem', lat: 50.6607, lng: 14.0323, w: 5 },
+  { city: 'Karlovy Vary', lat: 50.2306, lng: 12.8712, w: 5 },
+  { city: 'Jihlava', lat: 49.3961, lng: 15.5912, w: 4 },
+  { city: 'Kladno', lat: 50.1477, lng: 14.1028, w: 4 },
+  { city: 'Teplice', lat: 50.6404, lng: 13.8245, w: 4 },
+  { city: 'Havířov', lat: 49.7798, lng: 18.4369, w: 4 },
+  { city: 'Frýdek-Místek', lat: 49.6833, lng: 18.3500, w: 4 },
+  { city: 'Opava', lat: 49.9387, lng: 17.9026, w: 4 },
+  { city: 'Mladá Boleslav', lat: 50.4114, lng: 14.9031, w: 4 },
+  { city: 'Prostějov', lat: 49.4720, lng: 17.1118, w: 3 },
+  { city: 'Přerov', lat: 49.4551, lng: 17.4509, w: 3 },
+  { city: 'Tábor', lat: 49.4144, lng: 14.6578, w: 3 },
+  { city: 'Znojmo', lat: 48.8555, lng: 16.0488, w: 3 },
+  { city: 'Trutnov', lat: 50.5608, lng: 15.9128, w: 3 },
+  { city: 'Cheb', lat: 50.0796, lng: 12.3739, w: 3 },
+  { city: 'Chomutov', lat: 50.4605, lng: 13.4178, w: 3 },
+  { city: 'Kolín', lat: 50.0281, lng: 15.2003, w: 3 },
+  { city: 'Písek', lat: 49.3088, lng: 14.1475, w: 3 }
 ];
+
+var DEVICES = ['QUATTRO-MAX 450', 'CONTLEX SENSE', 'Q-MASTER', 'NEOFRAX', 'ELLYSE SENSE', 'SOLRAY', 'BIOXEL', 'HIFU 10D', 'EM MASTER', 'PROFACIAL', 'PICOLASER 500', 'APOLO'];
+var PREFIXES = ['Beauty Studio', 'Estetické štúdio', 'Klinika estetiky', 'Laser Center', 'Kozmetický salón', 'Medical Beauty', 'Derma Clinic', 'Beauty Lounge', 'Estetic Care', 'Skin Studio'];
+
+var CUSTOM_INSTALLATIONS = [];
+
+var INSTALLATIONS = (function () {
+  var TOTAL = 350;
+  var out = CUSTOM_INSTALLATIONS.slice();
+  var seed = 20260819;
+  function rnd() { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; }
+
+  var totalW = CITIES.reduce(function (s, c) { return s + c.w; }, 0);
+  var remaining = TOTAL - out.length;
+  var i = 0;
+
+  CITIES.forEach(function (c, ci) {
+    var count = Math.max(1, Math.round(remaining * c.w / totalW));
+    for (var k = 0; k < count; k++) {
+      out.push({
+        name: PREFIXES[(i + ci) % PREFIXES.length] + ' ' + c.city + (k > 0 ? ' ' + (k + 1) : ''),
+        city: c.city,
+        device: DEVICES[i % DEVICES.length],
+        lat: c.lat + (rnd() - 0.5) * 0.16,
+        lng: c.lng + (rnd() - 0.5) * 0.24
+      });
+      i++;
+    }
+  });
+
+  while (out.length < TOTAL) {
+    var c2 = CITIES[out.length % CITIES.length];
+    out.push({
+      name: PREFIXES[out.length % PREFIXES.length] + ' ' + c2.city + ' ' + out.length,
+      city: c2.city,
+      device: DEVICES[out.length % DEVICES.length],
+      lat: c2.lat + (rnd() - 0.5) * 0.16,
+      lng: c2.lng + (rnd() - 0.5) * 0.24
+    });
+  }
+
+  return out.slice(0, TOTAL);
+})();
 
 /* ============================================================
    4) MAPA — Leaflet + MarkerCluster
