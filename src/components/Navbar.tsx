@@ -103,6 +103,7 @@ const navItems: NavItem[] = [
   },
   { label: "VIP PROGRAM", href: "/vip-program" },
   { label: "KONTAKT", href: "#kontakt" },
+  { label: "MAPA INŠTALÁCIÍ", href: "/bsl-landing.html" },
 ];
 
 const Navbar = () => {
