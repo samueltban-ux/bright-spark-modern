@@ -317,7 +317,11 @@ const Navbar = () => {
                     onClick={() => {
                       if (!item.children) {
                         setMobileOpen(false);
-                        window.location.hash = item.href.replace('#', '');
+                        if (item.href.startsWith('#')) {
+                          window.location.hash = item.href.replace('#', '');
+                        } else {
+                          window.location.href = item.href;
+                        }
                       } else {
                         setOpenDropdown(openDropdown === item.label ? null : item.label);
                       }
