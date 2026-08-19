@@ -58,7 +58,6 @@ const Footer = () => {
                 { label: "Ošetrenie tváre", href: "https://www.bsltrade.sk/hifu-contlex-sense/" },
                 { label: "Ošetrenie tela", href: "https://www.bsltrade.sk/endo-u-shape/" },
                 { label: "IPL a Lasery", href: "https://www.bsltrade.sk/apolo/" },
-                { label: "Solária", href: "https://www.bsltrade.sk/tecnosole/" },
               ].map((l) => (
                 <li key={l.label}>
                   <a href={l.href} className="text-primary-foreground/40 hover:text-accent transition-colors text-sm">

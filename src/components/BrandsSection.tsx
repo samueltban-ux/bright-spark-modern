@@ -2,7 +2,6 @@ import Reveal from "./Reveal";
 
 const brands = [
   { name: "GENERAL PROJECT", country: "Taliansko" },
-  { name: "TECNOSOLE", country: "Taliansko" },
   { name: "APOLO", country: "Európa" },
   { name: "CONTLEX", country: "Kórea" },
   { name: "ENDO U-SHAPE", country: "Európa" },

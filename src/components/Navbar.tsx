@@ -74,19 +74,6 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    label: "SOLÁRIA",
-    href: "#solaria",
-    children: [
-      { label: "XSUN23", href: "https://www.bsltrade.sk/xsun23/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/xsun23.png" },
-      { label: "XSUN23 APERTA", href: "https://www.bsltrade.sk/xsun23-aperta-otvorene/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/xsun23-aperta.png" },
-      { label: "RIVIERA", href: "https://www.bsltrade.sk/riviera/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/riviera.png" },
-      { label: "ULTRASUN Q6", href: "https://www.bsltrade.sk/ultrasun-q6/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/ultrasun-q6.png" },
-      { label: "ULTRASUN Q10", href: "https://www.bsltrade.sk/ultrasun-q10/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/ultrasun-q10.png" },
-      { label: "ULTRASUN Q14", href: "https://www.bsltrade.sk/ultrasun-q14/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/ultrasun-q14.png" },
-      { label: "TRUBICE", href: "https://www.bsltrade.sk/trubice/", image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/trubice.png" },
-    ],
-  },
-  {
     label: "REHABILITÁCIA",
     href: "#rehab",
     children: [
