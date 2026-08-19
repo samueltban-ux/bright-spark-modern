@@ -73,17 +73,6 @@ const devices: Device[] = [
       (a.budget === "mid" || a.budget === "high" ? 25 : 10) +
       (a.size !== "wellness" ? 10 : 5),
   },
-  {
-    name: "TECNOSOLE",
-    tagline: "Profesionálne solárium",
-    desc: "Talianska kvalita pre wellness centrá a soláriá. Spoľahlivé a energeticky úsporné riešenie.",
-    link: "https://www.bsltrade.sk/tecnosole/",
-    image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/solaria.jpg",
-    match: (a) =>
-      (a.goal === "rehab" ? 30 : 0) +
-      (a.size === "wellness" ? 50 : 5) +
-      (a.budget === "high" || a.budget === "premium" ? 20 : 10),
-  },
 ];
 
 const steps = [
