@@ -27,14 +27,6 @@ const categories = [
     count: "5+",
     label: "prístrojov",
   },
-  {
-    title: "Solária",
-    subtitle: "TECNOSOLE",
-    image: "https://www.bsltrade.sk/wp-content/uploads/2024/09/solaria.jpg",
-    href: "https://www.bsltrade.sk/tecnosole/",
-    count: "10+",
-    label: "modelov",
-  },
 ];
 
 const CategoriesSection = () => {
