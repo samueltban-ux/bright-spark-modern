@@ -31,11 +31,6 @@ const faqs = [
     answer:
       "Samozrejme. Poskytujeme kompletný pozáručný servis, pravidelnú údržbu a dodávku originálnych náhradných dielov a spotrebného materiálu.",
   },
-  {
-    question: "Môžem si prístroj pred kúpou vyskúšať?",
-    answer:
-      "Áno, v našom showroome v Bratislave si môžete dohodnúť nezáväznú prezentáciu a vyskúšať si prístroj na vlastnej koži. Stačí nás kontaktovať.",
-  },
 ];
 
 const FaqSection = () => {
