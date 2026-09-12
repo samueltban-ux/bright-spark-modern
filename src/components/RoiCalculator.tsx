@@ -4,6 +4,7 @@ import { X, Calculator } from "lucide-react";
 interface Device {
   name: string;
   image: string;
+  badge?: string;
 }
 
 interface Category {
@@ -15,18 +16,25 @@ const categories: Category[] = [
   {
     title: "Lasery a IPL",
     devices: [
+      { name: "QUATTRO-MAX 450", image: "https://i.postimg.cc/JnC8PCrN/QUATRO.jpg" },
+      { name: "DIOLASHEER ICE", image: "https://i.postimg.cc/nrZtqqsB/Novy-pristroj.jpg" },
       { name: "APOLO LASER", image: "https://i.postimg.cc/qvz2PKgH/apolo-Photoroom.png" },
       { name: "PICOLASER 500", image: "https://i.postimg.cc/0yb7TSrM/Pico-Laser.jpg" },
       { name: "IPL BETA", image: "https://i.postimg.cc/XYp9R5XX/ipl-beta-1.png" },
       { name: "EPIL EVO", image: "https://i.postimg.cc/qvz2PKgp/EVO-1.jpg" },
       { name: "MULTI WAVE", image: "https://i.postimg.cc/SxJcB9jk/epil-multi-wave.png" },
+      { name: "ICE PRO MAX", image: "https://i.postimg.cc/x82ZnbPz/01-1.jpg" },
+      { name: "EPIL PLUS", image: "https://i.postimg.cc/vZL6r3J5/05.png" },
+      { name: "NEOFRAX", image: "https://i.postimg.cc/9fCZTn25/01-2.jpg" },
+      { name: "Q-MASTER", image: "https://i.postimg.cc/8CNMW0GV/01-3.jpg" },
+      { name: "BIOXEL", image: "https://i.postimg.cc/qRYwdHhV/Bioxel.png" },
+      { name: "SOLRAY", image: "https://i.postimg.cc/FHmZvZKB/Solray.png" },
     ],
   },
   {
     title: "Telo a chudnutie",
     devices: [
-      { name: "EM MASTER NEO", image: "https://i.postimg.cc/5268hzjQ/NEO.png" },
-      { name: "EMS BODY", image: "https://i.postimg.cc/jSLypfCr/ems.png" },
+      { name: "EMS-telo", image: "https://i.postimg.cc/5268hzjQ/NEO.png" },
       { name: "ROBOLEX", image: "https://i.postimg.cc/qMm8DwBT/01.jpg" },
       { name: "RIGENERA 3", image: "https://i.postimg.cc/K8Rt6T47/Rigenera-3-2.png" },
       { name: "ENDO U-SHAPE", image: "https://i.postimg.cc/RVPcpdCz/endo-u-shape.png" },
@@ -34,6 +42,11 @@ const categories: Category[] = [
       { name: "VIEWFIX", image: "https://i.postimg.cc/Sx3ckKzc/VIEWFIX.png" },
       { name: "MED SHAPE", image: "https://i.postimg.cc/x1cLwmqk/MED-SHAPE.png" },
       { name: "KRYOLIPOLÝZA", image: "https://i.postimg.cc/Z5264qyr/X-COOL.jpg" },
+      { name: "EM MASTER", image: "https://i.postimg.cc/jSLypfCr/R-Therma.jpg" },
+      { name: "CRYO&EMS", image: "https://i.postimg.cc/RV64Vz5y/CRYOEMS.jpg" },
+      { name: "THERMAL WAVE", image: "https://i.postimg.cc/cCqCd1k6/01-5.png" },
+      { name: "SINESON", image: "https://i.postimg.cc/GpY4By0r/02-3.png", badge: "tvár+telo" },
+      { name: "HYSONIC IOT", image: "https://i.postimg.cc/Z5MchQbS/Whats-App-Image-2026-08-30-at-13-47-42.jpg", badge: "tvár+telo" },
     ],
   },
   {
@@ -42,17 +55,20 @@ const categories: Category[] = [
       { name: "PROFACIAL", image: "https://i.postimg.cc/T3pnzbhV/profacial.png" },
       { name: "HYDRO BEAUTY", image: "https://i.postimg.cc/bws17ndr/HYDRO.jpg" },
       { name: "HYDRO MASTER", image: "https://i.postimg.cc/vZc5JnDH/HYDRO-MASTER.jpg" },
-      { name: "R.THERMA", image: "https://i.postimg.cc/jSLypfCz/R-Therma.jpg" },
       { name: "THERMA V", image: "https://i.postimg.cc/T3FnfPWW/thermavb-300x470.png" },
-      { name: "CARE 7", image: "https://i.postimg.cc/CLvjr7Mh/0000005-e1577740712143.jpg" },
+      { name: "CARE 7", image: "https://i.postimg.cc/br1g3JSW/aa-768x829.png" },
       { name: "HIFU V-MAX", image: "https://i.postimg.cc/Qx6pYmNj/Hifu-V-max.png" },
       { name: "HIFU CONTLEX", image: "https://i.postimg.cc/cLrfp36L/hifu-1.png" },
       { name: "HIFU 360 SMART", image: "https://i.postimg.cc/15Wp7BRR/360.jpg" },
-      { name: "HIFU 10D", image: "https://i.postimg.cc/C5dDBvRQ/HIFU-10D.png" },
-      { name: "HIFU CONTLEX SENSE", image: "https://i.postimg.cc/pr7jDDjQ/HIFU-CONTLEX-SENSE.png" },
+      { name: "HIFU 10D", image: "https://i.postimg.cc/28dYKCf4/HIFU-10D.png" },
+      { name: "HIFU CONTLEX SENSE", image: "https://i.postimg.cc/1RW33HgH/01-4.png" },
+      { name: "ELLYSE SENSE", image: "https://i.postimg.cc/CKSkDQ0g/01-2.png" },
       { name: "AQUA INJECTOR", image: "https://i.postimg.cc/Qx6pYmNs/01.png" },
       { name: "PLASMAGUN", image: "https://i.postimg.cc/Mpv1CBXV/plasmagun.png" },
       { name: "FLAMINGO", image: "https://i.postimg.cc/pLpKwjyF/plamingo.jpg" },
+      { name: "COOLIFTING", image: "https://i.postimg.cc/HsPtty7v/01.jpg" },
+      { name: "SINESON", image: "https://i.postimg.cc/GpY4By0r/02-3.png", badge: "tvár+telo" },
+      { name: "HYSONIC IOT", image: "https://i.postimg.cc/Z5MchQbS/Whats-App-Image-2026-08-30-at-13-47-42.jpg", badge: "tvár+telo" },
     ],
   },
 ];
@@ -265,6 +281,11 @@ const RoiCalculator = () => {
                               : "border-[#e2e8f0]"
                           }`}
                         >
+                          {device.badge && (
+                            <span className="absolute top-1.5 right-2 z-10 rounded bg-primary px-1 py-0.5 text-[6px] font-extrabold uppercase leading-tight text-primary-foreground">
+                              {device.badge}
+                            </span>
+                          )}
                           <img
                             src={device.image}
                             alt={device.name}
@@ -342,6 +363,17 @@ const RoiCalculator = () => {
                       type="email"
                       name="Email"
                       required
+                      className="p-3 border-2 border-[#e2e8f0] rounded-[11px] text-[15px] font-semibold bg-white text-[#0f172a] outline-none focus:border-green-500"
+                    />
+                  </div>
+                  <div className="flex flex-col mb-5">
+                    <label className="text-[11px] font-bold mb-1 text-[#1e293b] uppercase tracking-[0.4px] text-left">
+                      Telefónne číslo (nepovinné)
+                    </label>
+                    <input
+                      type="tel"
+                      name="Telefon"
+                      placeholder="+421 900 000 000"
                       className="p-3 border-2 border-[#e2e8f0] rounded-[11px] text-[15px] font-semibold bg-white text-[#0f172a] outline-none focus:border-green-500"
                     />
                   </div>
