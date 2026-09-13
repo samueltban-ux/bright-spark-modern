@@ -26,12 +26,12 @@ const items = [
 const TrustBar = () => {
   return (
     <section className="relative z-10 bg-background/80 backdrop-blur-xl border-b border-border/40">
-      <div className="container mx-auto px-4 py-5">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+      <div className="container mx-auto px-4 py-5 md:py-5">
+        <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-1 md:grid md:grid-cols-4 md:overflow-visible md:pb-0 md:gap-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {items.map((item, i) => (
             <div
               key={i}
-              className="group flex items-center gap-3 p-3 rounded-xl border border-border/30 bg-card/50 hover:bg-card hover:border-accent/20 transition-colors"
+               className="group flex min-w-[78vw] snap-center items-center gap-3 p-4 rounded-lg border border-border/30 bg-card/70 hover:bg-card hover:border-accent/20 transition-colors sm:min-w-[48%] md:min-w-0"
             >
               <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-accent/10 text-accent shrink-0">
                 <item.icon className="w-5 h-5" />

@@ -31,11 +31,11 @@ const categories = [
 
 const CategoriesSection = () => {
   return (
-    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+    <section id="kategorie" className="py-16 md:py-32 bg-background relative overflow-hidden">
       <div className="absolute inset-0 gradient-mesh opacity-60" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
+         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8 md:mb-14 gap-4 md:gap-6">
           <div>
             <span className="inline-flex items-center gap-2 px-3.5 py-1.5 text-[10px] font-bold tracking-[0.25em] uppercase text-accent bg-accent/8 rounded-full mb-5 border border-accent/15">
               Naša ponuka
@@ -54,7 +54,7 @@ const CategoriesSection = () => {
             <a
               key={cat.title}
               href={cat.href}
-              className="group relative rounded-2xl overflow-hidden aspect-[3/4] transition-all duration-500 transform hover:-translate-y-1.5"
+             className="group relative rounded-lg overflow-hidden aspect-[5/4] sm:aspect-[3/4] transition-all duration-500 transform hover:-translate-y-1.5"
               style={{ animationDelay: `${i * 100}ms` }}
             >
               {/* Background */}
@@ -78,12 +78,12 @@ const CategoriesSection = () => {
               </div>
 
               {/* Image */}
-              <div className="absolute inset-0 flex items-center justify-center p-6 pt-14">
+               <div className="absolute inset-0 flex items-center justify-center p-4 pt-12 sm:p-6 sm:pt-14">
                 <SmartImage
                   src={cat.image}
                   alt={cat.title}
-                  wrapperClassName="max-h-96 w-auto flex items-center justify-center"
-                  className="max-h-96 w-auto object-contain transition-all duration-700 group-hover:scale-110 drop-shadow-xl"
+                   wrapperClassName="h-full w-full flex items-center justify-center"
+                   className="max-h-full max-w-[75%] sm:max-w-full w-auto object-contain transition-all duration-700 group-hover:scale-105 drop-shadow-xl"
                 />
               </div>
 
