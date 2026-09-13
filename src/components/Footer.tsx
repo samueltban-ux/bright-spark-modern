@@ -7,17 +7,17 @@ const Footer = () => {
     <footer className="bg-[hsl(var(--navy-dark))] border-t border-primary-foreground/5 relative overflow-hidden">
       <div className="absolute top-0 left-1/4 w-[500px] h-[300px] bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="container mx-auto px-4 py-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+       <div className="container mx-auto px-4 py-12 md:py-16 relative z-10">
+         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 mb-10 md:mb-12">
           {/* Brand */}
-          <div className="lg:col-span-1">
+           <div className="col-span-2 lg:col-span-1">
             <img
               src="https://www.bsltrade.sk/wp-content/uploads/2024/09/log90.png"
               alt="BSL Trade s.r.o."
               className="h-10 brightness-200 mb-5"
             />
             <p className="text-primary-foreground/40 text-sm leading-relaxed mb-5">
-              Profesionálne prístroje pre estetickú medicínu, rehabilitáciu a wellness. Viac ako 20 rokov na trhu.
+               Profesionálne prístroje pre estetickú medicínu, rehabilitáciu a wellness. 21+ rokov na trhu.
             </p>
             <a
               href="https://www.instagram.com/bsl_trade/"
@@ -36,7 +36,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {[
                 { label: "Domov", href: "/" },
-                { label: "VIP Program", href: "/vip-program" },
+                 { label: "Analyzéry pleti", href: "https://www.bsltrade.sk/" },
                 { label: "FAQ", href: "/#faq" },
                 { label: "Kontakt", href: "/#kontakt" },
               ].map((l) => (
@@ -51,7 +51,7 @@ const Footer = () => {
           </div>
 
           {/* Categories */}
-          <div>
+           <div className="col-span-2 sm:col-span-1">
             <h4 className="text-primary-foreground text-xs font-bold uppercase tracking-[0.2em] mb-5">Kategórie</h4>
             <ul className="space-y-3">
               {[
@@ -73,9 +73,9 @@ const Footer = () => {
             <h4 className="text-primary-foreground text-xs font-bold uppercase tracking-[0.2em] mb-5">Kontakt</h4>
             <ul className="space-y-3.5">
               <li>
-                <a href="tel:+421000000000" className="flex items-start gap-2.5 text-primary-foreground/40 hover:text-accent transition-colors text-sm">
+                 <a href="tel:0903400896" className="flex items-start gap-2.5 text-primary-foreground/40 hover:text-accent transition-colors text-sm">
                   <Phone className="w-4 h-4 mt-0.5 shrink-0 text-accent/70" />
-                  <span>+421 000 000 000</span>
+                   <span>0903 400 896</span>
                 </a>
               </li>
               <li>

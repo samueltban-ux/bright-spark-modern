@@ -43,10 +43,10 @@ const NewsletterSection = () => {
   };
 
   return (
-    <section className="py-16 md:py-20 bg-background relative overflow-hidden">
+    <section className="py-12 md:py-20 bg-background relative overflow-hidden">
       <div className="absolute inset-0 gradient-mesh opacity-40" />
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl mx-auto rounded-2xl gradient-navy p-8 md:p-12 relative overflow-hidden border border-primary-foreground/5">
+         <div className="max-w-3xl mx-auto rounded-lg md:rounded-2xl gradient-navy p-6 md:p-12 relative overflow-hidden border border-primary-foreground/5">
           <div className="absolute -top-20 -right-20 w-64 h-64 bg-accent/15 rounded-full blur-[120px]" />
           <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-[hsl(var(--sky-light)/0.1)] rounded-full blur-[120px]" />
 
@@ -75,13 +75,13 @@ const NewsletterSection = () => {
                   disabled={done}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="vas@email.sk"
-                  className="w-full rounded-lg bg-primary-foreground/[0.06] border border-primary-foreground/[0.1] text-primary-foreground text-sm pl-11 pr-4 py-3 placeholder:text-primary-foreground/25 focus:outline-none focus:border-accent/40 transition-colors"
+                   className="w-full min-h-12 rounded-lg bg-primary-foreground/[0.06] border border-primary-foreground/[0.1] text-primary-foreground text-base md:text-sm pl-11 pr-4 py-3 placeholder:text-primary-foreground/25 focus:outline-none focus:border-accent/40 transition-colors"
                 />
               </div>
               <button
                 type="submit"
                 disabled={loading || done}
-                className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold text-sm rounded-lg px-6 py-3 transition-all disabled:opacity-50 hover:-translate-y-0.5"
+                 className="inline-flex min-h-12 items-center justify-center gap-2 bg-success hover:bg-success/90 text-success-foreground font-semibold text-sm rounded-lg px-6 py-3 transition-all disabled:opacity-50 hover:-translate-y-0.5"
               >
                 {done ? (
                   <>

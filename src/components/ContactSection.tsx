@@ -53,32 +53,32 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="kontakt" className="py-24 md:py-32 relative overflow-hidden noise">
+    <section id="kontakt" className="py-16 md:py-32 relative overflow-hidden noise">
       <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--navy-dark))] via-[hsl(var(--navy))] to-[hsl(var(--navy-dark)/0.9)]" />
       <div className="absolute top-0 left-1/3 w-[400px] h-[400px] bg-accent/6 rounded-full blur-[180px]" />
       <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-[hsl(var(--sky-light)/0.04)] rounded-full blur-[120px]" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-14">
+         <div className="text-left md:text-center mb-8 md:mb-14">
           <span className="inline-flex items-center gap-2 px-3.5 py-1.5 text-[10px] font-bold tracking-[0.25em] uppercase text-accent bg-accent/10 rounded-full mb-5 border border-accent/15">
             Kontakt
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-3">
             Kontaktujte <span className="text-gradient">nás</span>
           </h2>
-          <p className="text-primary-foreground/40 text-sm max-w-lg mx-auto">
+           <p className="text-primary-foreground/40 text-sm max-w-lg md:mx-auto">
             Radi vám poradíme s výberom správneho prístroja
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Contact info cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+           <div className="grid grid-cols-2 gap-2 sm:gap-3">
             {contacts.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className={`group relative rounded-xl p-6 transition-all duration-300 overflow-hidden ${
+                 className={`group relative min-w-0 rounded-lg p-4 sm:p-6 transition-all duration-300 overflow-hidden ${
                   item.highlight
                     ? "bg-success/10 border border-success/30 hover:bg-success/15 hover:border-success/50 shadow-[0_0_24px_-10px_hsl(var(--success)/0.35)]"
                     : "bg-primary-foreground/[0.03] border border-primary-foreground/[0.06] hover:bg-primary-foreground/[0.06] hover:border-accent/15"
@@ -100,7 +100,7 @@ const ContactSection = () => {
                 <p className={`text-[9px] uppercase tracking-[0.2em] font-medium mb-1 ${
                   item.highlight ? "text-success/60" : "text-primary-foreground/35"
                 }`}>{item.label}</p>
-                <p className={`text-sm font-bold leading-snug ${
+                 <p className={`break-words text-xs sm:text-sm font-bold leading-snug ${
                   item.highlight ? "text-success-foreground" : "text-primary-foreground"
                 }`}>{item.value}</p>
               </a>
@@ -108,7 +108,7 @@ const ContactSection = () => {
           </div>
 
           {/* Contact form */}
-          <form onSubmit={handleSubmit} className="rounded-xl p-6 md:p-8 bg-primary-foreground/[0.03] border border-primary-foreground/[0.06] space-y-4">
+           <form onSubmit={handleSubmit} className="rounded-lg p-5 md:p-8 bg-primary-foreground/[0.03] border border-primary-foreground/[0.06] space-y-4">
             <h3 className="text-primary-foreground font-semibold text-lg mb-2">Napíšte nám</h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -118,7 +118,7 @@ const ContactSection = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full rounded-lg bg-primary-foreground/[0.05] border border-primary-foreground/[0.08] text-primary-foreground text-sm px-4 py-2.5 placeholder:text-primary-foreground/20 focus:outline-none focus:border-accent/30 transition-colors"
+                   className="w-full min-h-12 rounded-lg bg-primary-foreground/[0.05] border border-primary-foreground/[0.08] text-primary-foreground text-base md:text-sm px-4 py-2.5 placeholder:text-primary-foreground/20 focus:outline-none focus:border-accent/30 transition-colors"
                   placeholder="Vaše meno"
                 />
               </div>
@@ -129,7 +129,7 @@ const ContactSection = () => {
                   type="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full rounded-lg bg-primary-foreground/[0.05] border border-primary-foreground/[0.08] text-primary-foreground text-sm px-4 py-2.5 placeholder:text-primary-foreground/20 focus:outline-none focus:border-accent/30 transition-colors"
+                   className="w-full min-h-12 rounded-lg bg-primary-foreground/[0.05] border border-primary-foreground/[0.08] text-primary-foreground text-base md:text-sm px-4 py-2.5 placeholder:text-primary-foreground/20 focus:outline-none focus:border-accent/30 transition-colors"
                   placeholder="vas@email.sk"
                 />
               </div>
@@ -142,7 +142,7 @@ const ContactSection = () => {
                 type="tel"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full rounded-lg bg-primary-foreground/[0.05] border border-primary-foreground/[0.08] text-primary-foreground text-sm px-4 py-2.5 placeholder:text-primary-foreground/20 focus:outline-none focus:border-accent/30 transition-colors"
+                 className="w-full min-h-12 rounded-lg bg-primary-foreground/[0.05] border border-primary-foreground/[0.08] text-primary-foreground text-base md:text-sm px-4 py-2.5 placeholder:text-primary-foreground/20 focus:outline-none focus:border-accent/30 transition-colors"
                 placeholder="0903 000 000"
               />
             </div>
@@ -154,7 +154,7 @@ const ContactSection = () => {
                 value={formData.message}
                 onChange={handleChange}
                 rows={4}
-                className="w-full rounded-lg bg-primary-foreground/[0.05] border border-primary-foreground/[0.08] text-primary-foreground text-sm px-4 py-2.5 placeholder:text-primary-foreground/20 focus:outline-none focus:border-accent/30 transition-colors resize-none"
+                 className="w-full rounded-lg bg-primary-foreground/[0.05] border border-primary-foreground/[0.08] text-primary-foreground text-base md:text-sm px-4 py-3 placeholder:text-primary-foreground/20 focus:outline-none focus:border-accent/30 transition-colors resize-none"
                 placeholder="Čím vám môžeme pomôcť?"
               />
             </div>
@@ -162,7 +162,7 @@ const ContactSection = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-sm rounded-lg px-6 py-3 shadow-[0_0_24px_-8px_hsl(var(--accent)/0.5)] hover:shadow-[0_0_32px_-6px_hsl(var(--accent)/0.65)] transition-all disabled:opacity-50"
+               className="w-full min-h-12 flex items-center justify-center gap-2 bg-success hover:bg-success/90 text-success-foreground font-bold text-sm rounded-lg px-6 py-3 shadow-[0_0_24px_-8px_hsl(var(--success)/0.5)] transition-all disabled:opacity-50"
             >
               {isSubmitting ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
