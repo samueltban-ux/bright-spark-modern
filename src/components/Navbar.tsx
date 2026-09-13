@@ -138,20 +138,20 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`sticky top-0 z-50 transition-all duration-500 ${
+      <nav className={`sticky top-0 z-50 transition-all duration-500 max-lg:bg-navy-dark/95 max-lg:border-b max-lg:border-primary-foreground/10 ${
         scrolled
           ? "bg-card/95 backdrop-blur-2xl shadow-xl shadow-foreground/[0.06] border-b border-border/40"
           : "bg-card/80 backdrop-blur-xl border-b border-border/20"
       }`}>
         {/* Top accent line */}
         <div className="h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
-        <div className="container mx-auto flex items-center justify-between py-2.5 px-4 gap-4">
+        <div className="container mx-auto flex items-center justify-between py-2.5 px-4 gap-4 max-lg:min-h-16">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group shrink-0">
             <img
               src={logoImg}
               alt="BSL Trade s.r.o."
-              className="h-9 transition-transform duration-300 group-hover:scale-105"
+              className="h-9 max-lg:h-10 max-lg:brightness-200 transition-transform duration-300 group-hover:scale-105"
             />
           </a>
 
@@ -279,7 +279,7 @@ const Navbar = () => {
 
           {/* Mobile toggle */}
           <button
-            className="lg:hidden p-2.5 text-foreground/70 hover:text-foreground transition-colors rounded-xl hover:bg-muted/50"
+            className="lg:hidden flex h-11 w-11 items-center justify-center rounded-lg border border-primary-foreground/10 bg-primary-foreground/5 p-0 text-primary-foreground transition-colors hover:bg-primary-foreground/10"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Zavrieť menu" : "Otvoriť menu"}
           >
@@ -295,12 +295,12 @@ const Navbar = () => {
             className="fixed inset-0 z-40 bg-navy-dark/70 backdrop-blur-sm animate-in fade-in duration-300"
             onClick={() => setMobileOpen(false)}
           />
-          <div className="fixed inset-x-0 top-[88px] z-50 container mx-auto px-4 animate-in slide-in-from-top-3 duration-300">
-            <div className="lg:hidden bg-card/[0.98] backdrop-blur-2xl border border-border/40 rounded-2xl shadow-2xl shadow-foreground/[0.08] max-h-[80vh] overflow-y-auto">
+           <div className="fixed inset-x-0 top-16 z-50 px-3 animate-in slide-in-from-top-3 duration-300">
+             <div className="lg:hidden bg-navy-dark/[0.98] backdrop-blur-2xl border border-primary-foreground/10 rounded-lg shadow-2xl max-h-[calc(100vh-5rem)] overflow-y-auto overscroll-contain">
               {navItems.map((item) => (
-                <div key={item.label} className="border-b border-border/10 last:border-b-0">
+                 <div key={item.label} className="border-b border-primary-foreground/10 last:border-b-0">
                   <button
-                    className="w-full text-left px-5 py-4 text-sm font-semibold text-foreground/80 hover:text-foreground hover:bg-muted/30 transition-colors flex items-center justify-between"
+                    className="w-full min-h-14 text-left px-4 py-3 text-sm font-semibold text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/5 transition-colors flex items-center justify-between"
                     onClick={() => {
                       if (!item.children) {
                         setMobileOpen(false);
@@ -320,16 +320,16 @@ const Navbar = () => {
                     )}
                   </button>
                   {item.children && openDropdown === item.label && (
-                    <div className="bg-muted/10 px-3 pb-3">
-                      <div className="grid grid-cols-3 gap-2">
+                     <div className="bg-primary-foreground/[0.025] px-3 pb-3">
+                       <div className="grid grid-cols-2 gap-2">
                         {item.children.map((child) => (
                           <a
                             key={child.label}
                             href={child.href}
-                            className="group/mcard flex flex-col items-center p-2.5 rounded-xl border border-border/20 hover:border-accent/20 hover:bg-accent/[0.03] transition-all"
+                             className="group/mcard flex min-h-36 flex-col items-center p-2.5 rounded-lg border border-primary-foreground/10 bg-primary-foreground/[0.03] hover:border-accent/20 hover:bg-accent/[0.06] transition-all"
                             onClick={() => setMobileOpen(false)}
                           >
-                            <div className="w-full aspect-square rounded-lg bg-muted/20 flex items-center justify-center mb-1.5 overflow-hidden">
+                             <div className="w-full h-24 rounded-md bg-primary-foreground/[0.04] flex items-center justify-center mb-2 overflow-hidden">
                               {child.image && !imgErrors.has(child.label) ? (
                                 <img
                                   src={child.image}
@@ -343,7 +343,7 @@ const Navbar = () => {
                                 </span>
                               )}
                             </div>
-                            <span className="text-[9px] font-semibold text-muted-foreground group-hover/mcard:text-accent text-center leading-tight line-clamp-2 transition-colors">
+                             <span className="text-[10px] font-semibold text-primary-foreground/60 group-hover/mcard:text-accent text-center leading-tight line-clamp-2 transition-colors">
                               {child.label}
                             </span>
                           </a>

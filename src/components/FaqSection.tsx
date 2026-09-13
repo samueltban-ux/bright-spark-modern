@@ -45,7 +45,7 @@ const FaqSection = () => {
   };
 
   return (
-    <section id="faq" className="py-24 md:py-32 relative overflow-hidden noise">
+    <section id="faq" className="py-16 md:py-32 relative overflow-hidden noise">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -54,27 +54,27 @@ const FaqSection = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/4 rounded-full blur-[200px]" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-14">
+         <div className="text-left md:text-center mb-8 md:mb-14">
           <span className="inline-flex items-center gap-2 px-3.5 py-1.5 text-[10px] font-bold tracking-[0.25em] uppercase text-accent bg-accent/10 rounded-full mb-5 border border-accent/15">
             FAQ
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-3">
             Často kladené <span className="text-gradient">otázky</span>
           </h2>
-          <p className="text-primary-foreground/40 text-sm max-w-lg mx-auto">
+           <p className="text-primary-foreground/40 text-sm max-w-lg md:mx-auto">
             Odpovede na najčastejšie otázky o našich prístrojoch a službách
           </p>
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-3">
+           <Accordion type="single" collapsible className="space-y-2 md:space-y-3">
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="rounded-xl bg-primary-foreground/[0.03] border border-primary-foreground/[0.06] px-6 overflow-hidden data-[state=open]:border-accent/15 transition-colors"
+                 className="rounded-lg bg-primary-foreground/[0.03] border border-primary-foreground/[0.06] px-4 md:px-6 overflow-hidden data-[state=open]:border-accent/15 transition-colors"
               >
-                <AccordionTrigger className="text-primary-foreground text-sm md:text-base font-medium hover:no-underline hover:text-accent transition-colors py-5 [&>svg]:text-accent/50">
+                 <AccordionTrigger className="min-h-14 text-left text-primary-foreground text-sm md:text-base font-medium hover:no-underline hover:text-accent transition-colors py-4 md:py-5 [&>svg]:text-accent/50">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-primary-foreground/50 text-sm leading-relaxed pb-5">

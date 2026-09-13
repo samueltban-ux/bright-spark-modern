@@ -2,7 +2,7 @@ import { Phone, Mail, MapPin } from "lucide-react";
 
 const TopBar = () => {
   return (
-    <div className="bg-navy-dark border-b border-primary-foreground/[0.06]">
+    <div className="hidden sm:block bg-navy-dark border-b border-primary-foreground/[0.06]">
       <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between py-2 px-4 text-[11px] gap-2 sm:gap-0">
         {/* Left: phone CTA */}
         <div className="flex items-center gap-3">

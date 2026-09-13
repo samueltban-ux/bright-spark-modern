@@ -16,7 +16,7 @@ const stats = [
 
 const AboutSection = () => {
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden noise">
+    <section className="py-16 md:py-32 relative overflow-hidden noise">
       <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--navy-dark))] via-[hsl(var(--navy))] to-[hsl(var(--navy-dark)/0.9)]" />
 
       {/* Decorative */}
@@ -29,19 +29,19 @@ const AboutSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Stats bar */}
-        <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-20">
+         <div className="grid grid-cols-3 gap-3 md:flex md:flex-wrap md:justify-center md:gap-16 mb-12 md:mb-20">
           {stats.map((s) => (
-            <div key={s.label} className="text-center">
+             <div key={s.label} className="text-center min-w-0">
               <AnimatedCounter
                 value={s.value}
-                className="block text-3xl md:text-4xl font-extrabold text-accent mb-1"
+                 className="block text-2xl md:text-4xl font-extrabold text-accent mb-1"
               />
-              <div className="text-xs text-primary-foreground/40 uppercase tracking-[0.15em] font-medium">{s.label}</div>
+               <div className="text-[9px] md:text-xs text-primary-foreground/45 uppercase tracking-normal md:tracking-[0.15em] font-medium leading-tight">{s.label}</div>
             </div>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
           <div>
             <span className="inline-flex items-center gap-2 px-3.5 py-1.5 text-[10px] font-bold tracking-[0.25em] uppercase text-accent bg-accent/10 rounded-full mb-6 border border-accent/15">
               O nás
@@ -64,11 +64,11 @@ const AboutSection = () => {
             </a>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+           <div className="grid grid-cols-2 gap-2 sm:gap-3">
             {features.map((f) => (
               <div
                 key={f.title}
-                className="group relative rounded-xl p-6 bg-primary-foreground/[0.03] border border-primary-foreground/[0.06] hover:bg-primary-foreground/[0.06] hover:border-accent/15 transition-all duration-300 overflow-hidden"
+                 className="group relative rounded-lg p-4 sm:p-6 bg-primary-foreground/[0.03] border border-primary-foreground/[0.06] hover:bg-primary-foreground/[0.06] hover:border-accent/15 transition-all duration-300 overflow-hidden"
               >
                 <span className="absolute top-3 right-4 text-4xl font-bold text-primary-foreground/[0.03] group-hover:text-primary-foreground/[0.06] transition-colors">
                   {f.num}

@@ -150,7 +150,7 @@ const RoiCalculator = () => {
       {/* Floating button */}
       <button
         onClick={handleOpen}
-        className="fixed bottom-[30px] right-[30px] z-[2147483640] bg-green-500 text-white border-none rounded-full px-6 py-4 text-[15px] font-extrabold cursor-pointer flex items-center gap-2.5 shadow-[0_8px_30px_rgba(34,197,94,0.55)] animate-[kalkPulse_2.5s_ease-in-out_infinite] hover:animate-none hover:-translate-y-[3px] hover:scale-[1.04] transition-transform"
+         className="fixed bottom-4 right-4 sm:bottom-[30px] sm:right-[30px] z-[2147483640] bg-success text-success-foreground border border-success-foreground/10 rounded-full w-14 h-14 sm:w-auto sm:h-auto sm:px-6 sm:py-4 text-[15px] font-extrabold cursor-pointer flex items-center justify-center sm:gap-2.5 shadow-[0_8px_30px_hsl(var(--success)/0.45)] motion-safe:animate-[kalkPulse_2.5s_ease-in-out_infinite] hover:animate-none hover:-translate-y-[3px] hover:scale-[1.04] transition-transform"
         style={{ fontFamily: "-apple-system, sans-serif" }}
       >
         <Calculator className="w-5 h-5 flex-shrink-0" />
@@ -164,7 +164,7 @@ const RoiCalculator = () => {
           onClick={(e) => e.target === e.currentTarget && handleClose()}
         >
           <div
-            className="bg-white rounded-3xl w-full max-w-[1100px] h-[88vh] max-h-[88vh] overflow-hidden shadow-[0_40px_80px_-10px_rgba(0,0,0,0.6)] flex flex-col relative"
+           className="bg-card rounded-lg sm:rounded-3xl w-full max-w-[1100px] h-[94dvh] sm:h-[88vh] max-h-[94dvh] sm:max-h-[88vh] overflow-hidden shadow-2xl flex flex-col relative"
             style={{ fontFamily: "-apple-system, sans-serif" }}
           >
             {/* Header */}
@@ -311,7 +311,7 @@ const RoiCalculator = () => {
           className="fixed inset-0 z-[2147483647] flex items-center justify-center p-5 bg-[rgba(15,23,42,0.97)]"
           onClick={(e) => e.target === e.currentTarget && handleLeadClose()}
         >
-          <div className="bg-white w-[90%] max-w-[450px] p-10 rounded-[26px] text-center relative">
+          <div className="bg-card w-full sm:w-[90%] max-w-[450px] p-6 sm:p-10 rounded-lg sm:rounded-[26px] text-center relative">
             <button
               onClick={handleLeadClose}
               className="absolute top-3.5 right-4 text-3xl cursor-pointer text-[#94a3b8] bg-none border-none"

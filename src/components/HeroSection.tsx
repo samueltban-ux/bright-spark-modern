@@ -73,7 +73,7 @@ const HeroSection = () => {
       ref={stageRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-[620px] md:min-h-[700px] lg:min-h-[780px] overflow-hidden"
+      className="relative min-h-[760px] sm:min-h-[720px] lg:min-h-[780px] overflow-hidden"
     >
       {/* Dark base */}
       <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--navy-dark))] via-[hsl(var(--navy))] to-[hsl(var(--navy-light)/0.8)]" />
@@ -120,17 +120,17 @@ const HeroSection = () => {
               : "opacity-0 -translate-x-[5%] blur-[2px]"
           }`}
         >
-          <div className="absolute inset-0 flex items-center">
-            <div className="container mx-auto px-4 lg:px-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+           <div className="absolute inset-0 flex items-start lg:items-center pt-5 sm:pt-8 lg:pt-0">
+             <div className="container mx-auto px-4 lg:px-8">
+               <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-8 lg:gap-16 items-center">
                 {/* Text content */}
                 <div className={`transition-all duration-700 delay-200 ${i === current ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
-                  <div className="relative p-6 md:p-8 lg:p-10 rounded-3xl overflow-hidden">
+                   <div className="relative p-5 sm:p-7 lg:p-10 rounded-lg sm:rounded-2xl lg:rounded-3xl overflow-hidden">
                     {/* Subtle readability panel */}
-                    <div className="absolute inset-0 bg-navy-dark/30 backdrop-blur-2xl rounded-3xl ring-1 ring-primary-foreground/5" />
+                     <div className="absolute inset-0 bg-navy-dark/35 backdrop-blur-2xl rounded-lg sm:rounded-2xl lg:rounded-3xl ring-1 ring-primary-foreground/10" />
 
                     <div className="relative z-10">
-                      <div className="flex items-center gap-3 mb-6">
+                       <div className="flex items-center gap-3 mb-4 sm:mb-6">
                         <div className="flex items-center gap-2 px-3 py-1.5 bg-accent/10 border border-accent/20 rounded-full">
                           <Zap className="w-3 h-3 text-accent" />
                           <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-accent">
@@ -139,7 +139,7 @@ const HeroSection = () => {
                         </div>
                       </div>
 
-                      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-primary-foreground mb-4 leading-[1.02] tracking-tight">
+                       <h1 className="text-[2rem] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-primary-foreground mb-3 sm:mb-4 leading-[1.05] tracking-normal">
                         {slide.title.split(' ').map((word, wi) => (
                           <span key={wi}>
                             {wi === 0 ? (
@@ -150,24 +150,24 @@ const HeroSection = () => {
                           </span>
                         ))}
                       </h1>
-                      <p className="text-lg md:text-xl text-primary-foreground/80 mb-3 font-light tracking-wide">
+                       <p className="text-base sm:text-lg md:text-xl text-primary-foreground/80 mb-2 sm:mb-3 font-light">
                         {slide.subtitle}
                       </p>
-                      <p className="text-primary-foreground/50 mb-10 text-sm md:text-base max-w-lg leading-relaxed">
+                       <p className="text-primary-foreground/55 mb-5 sm:mb-8 lg:mb-10 text-[13px] sm:text-sm md:text-base max-w-lg leading-relaxed line-clamp-3 sm:line-clamp-none">
                         {slide.desc}
                       </p>
 
-                      <div className="flex flex-wrap items-center gap-3">
+                       <div className="grid grid-cols-1 min-[390px]:grid-cols-2 items-center gap-2.5 sm:flex sm:flex-wrap sm:gap-3">
                         <MagneticButton
                           href={slide.link}
-                          className="group items-center gap-3 px-7 py-3.5 bg-accent text-accent-foreground font-bold rounded-xl hover:brightness-110 shadow-[0_0_32px_-8px_hsl(var(--accent)/0.55)] hover:shadow-[0_0_40px_-6px_hsl(var(--accent)/0.7)] text-sm hover:scale-[1.02] transition-all"
+                           className="group w-full sm:w-auto justify-center items-center gap-3 px-6 py-3.5 bg-success text-success-foreground font-bold rounded-lg hover:brightness-110 shadow-[0_0_32px_-8px_hsl(var(--success)/0.55)] text-sm hover:scale-[1.02] transition-all"
                         >
                           Zistiť viac
                           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                         </MagneticButton>
                         <a
                           href="tel:0903400896"
-                          className="inline-flex items-center gap-2 px-5 py-3.5 text-success font-semibold hover:text-success/90 border border-success/30 hover:border-success/50 bg-success/10 hover:bg-success/15 rounded-xl transition-all text-sm"
+                           className="inline-flex w-full sm:w-auto justify-center items-center gap-2 px-4 py-3.5 text-success font-semibold hover:text-success/90 border border-success/30 hover:border-success/50 bg-success/10 hover:bg-success/15 rounded-lg transition-all text-sm"
                         >
                           <span className="relative flex h-2 w-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75" />
@@ -181,7 +181,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Image */}
-                <div className={`flex justify-center items-center transition-all duration-700 delay-300 ${i === current ? "translate-y-0 opacity-100 scale-100" : "translate-y-8 opacity-0 scale-95"}`}>
+                 <div className={`flex h-[260px] sm:h-[310px] lg:h-auto justify-center items-center transition-all duration-700 delay-300 ${i === current ? "translate-y-0 opacity-100 scale-100" : "translate-y-8 opacity-0 scale-95"}`}>
                   <div
                     className="relative will-change-transform transition-transform duration-300 ease-out"
                     style={{
@@ -229,7 +229,7 @@ const HeroSection = () => {
                     <img
                       src={slide.image}
                       alt={slide.title}
-                      className="relative z-10 max-h-[360px] md:max-h-[480px] lg:max-h-[600px] w-auto object-contain drop-shadow-2xl animate-float"
+                       className="relative z-10 max-h-[245px] sm:max-h-[300px] md:max-h-[480px] lg:max-h-[600px] max-w-[78vw] w-auto object-contain drop-shadow-2xl animate-float"
                     />
                   </div>
                 </div>
@@ -242,13 +242,13 @@ const HeroSection = () => {
       {/* Navigation */}
       <button
         onClick={prev}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center bg-primary-foreground/5 backdrop-blur-xl rounded-xl text-primary-foreground/50 hover:bg-primary-foreground/10 hover:text-primary-foreground transition-all border border-primary-foreground/10"
+         className="absolute left-3 md:left-8 bottom-7 md:bottom-auto md:top-1/2 md:-translate-y-1/2 w-11 h-11 flex items-center justify-center bg-primary-foreground/5 backdrop-blur-xl rounded-lg text-primary-foreground/50 hover:bg-primary-foreground/10 hover:text-primary-foreground transition-all border border-primary-foreground/10"
       >
         <ChevronLeft className="w-4 h-4" />
       </button>
       <button
         onClick={next}
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center bg-primary-foreground/5 backdrop-blur-xl rounded-xl text-primary-foreground/50 hover:bg-primary-foreground/10 hover:text-primary-foreground transition-all border border-primary-foreground/10"
+         className="absolute right-3 md:right-8 bottom-7 md:bottom-auto md:top-1/2 md:-translate-y-1/2 w-11 h-11 flex items-center justify-center bg-primary-foreground/5 backdrop-blur-xl rounded-lg text-primary-foreground/50 hover:bg-primary-foreground/10 hover:text-primary-foreground transition-all border border-primary-foreground/10"
       >
         <ChevronRight className="w-4 h-4" />
       </button>
