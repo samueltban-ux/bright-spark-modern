@@ -311,7 +311,7 @@ const RoiCalculator = () => {
           className="fixed inset-0 z-[2147483647] flex items-center justify-center p-5 bg-[rgba(15,23,42,0.97)]"
           onClick={(e) => e.target === e.currentTarget && handleLeadClose()}
         >
-             className="bg-card w-full sm:w-[90%] max-w-[450px] p-6 sm:p-10 rounded-lg sm:rounded-[26px] text-center relative">
+          <div className="bg-card w-full sm:w-[90%] max-w-[450px] p-6 sm:p-10 rounded-lg sm:rounded-[26px] text-center relative">
             <button
               onClick={handleLeadClose}
               className="absolute top-3.5 right-4 text-3xl cursor-pointer text-[#94a3b8] bg-none border-none"
