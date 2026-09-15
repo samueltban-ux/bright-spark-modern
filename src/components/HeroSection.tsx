@@ -239,11 +239,22 @@ const HeroSection = () => {
                     {/* Reflection plate under product */}
                     <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-8 bg-accent/20 rounded-[50%] blur-2xl" />
 
-                    <img
-                      src={slide.image}
-                      alt={slide.title}
-                       className="relative z-10 max-h-[245px] sm:max-h-[300px] md:max-h-[480px] lg:max-h-[600px] max-w-[78vw] w-auto object-contain drop-shadow-2xl animate-float"
-                    />
+                    {slide.video?.mode === "portrait" ? (
+                      <div className="relative z-10 w-[min(78vw,260px)] sm:w-[280px] lg:w-[330px] aspect-[9/16] max-h-[245px] sm:max-h-[300px] md:max-h-[480px] lg:max-h-[600px] overflow-hidden rounded-2xl ring-1 ring-primary-foreground/10 shadow-2xl bg-navy-dark">
+                        <img
+                          src={slide.image}
+                          alt={slide.title}
+                          className="absolute inset-0 h-full w-full object-contain opacity-60"
+                        />
+                        <HeroVideo video={slide.video} active={i === current} title={slide.title} />
+                      </div>
+                    ) : (
+                      <img
+                        src={slide.image}
+                        alt={slide.title}
+                         className="relative z-10 max-h-[245px] sm:max-h-[300px] md:max-h-[480px] lg:max-h-[600px] max-w-[78vw] w-auto object-contain drop-shadow-2xl animate-float"
+                      />
+                    )}
                   </div>
                 </div>
               </div>
