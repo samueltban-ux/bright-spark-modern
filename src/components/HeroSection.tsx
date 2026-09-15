@@ -75,8 +75,9 @@ const HeroSection = () => {
   const handleMouseLeave = () => setTilt({ x: 0, y: 0 });
 
   useEffect(() => {
-    const timer = setInterval(() => goTo((current + 1) % slides.length), 7000);
-    return () => clearInterval(timer);
+    const delay = slides[current].video ? 16000 : 7000;
+    const timer = setTimeout(() => goTo((current + 1) % slides.length), delay);
+    return () => clearTimeout(timer);
   }, [current, goTo]);
 
   const pad = (n: number) => String(n).padStart(2, "0");
