@@ -163,12 +163,17 @@ const HeroSection = () => {
                           </span>
                         ))}
                       </h1>
-                       <p className="text-base sm:text-lg md:text-xl text-primary-foreground/80 mb-2 sm:mb-3 font-light">
-                        {slide.subtitle}
-                      </p>
-                       <p className="text-primary-foreground/55 mb-5 sm:mb-8 lg:mb-10 text-[13px] sm:text-sm md:text-base max-w-lg leading-relaxed line-clamp-3 sm:line-clamp-none">
-                        {slide.desc}
-                      </p>
+                      {!isFull && (
+                        <>
+                          <p className="text-base sm:text-lg md:text-xl text-primary-foreground/80 mb-2 sm:mb-3 font-light">
+                            {slide.subtitle}
+                          </p>
+                          <p className="text-primary-foreground/55 mb-5 sm:mb-8 lg:mb-10 text-[13px] sm:text-sm md:text-base max-w-lg leading-relaxed line-clamp-3 sm:line-clamp-none">
+                            {slide.desc}
+                          </p>
+                        </>
+                      )}
+                      {isFull && <div className="mb-5 sm:mb-8" />}
 
                        <div className="grid grid-cols-1 min-[390px]:grid-cols-2 items-center gap-2.5 sm:flex sm:flex-wrap sm:gap-3">
                         <MagneticButton
