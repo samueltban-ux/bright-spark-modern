@@ -277,7 +277,8 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-      ))}
+        );
+      })}
 
       {/* Navigation */}
       <button
