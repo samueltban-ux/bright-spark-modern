@@ -3,8 +3,21 @@ import { ChevronLeft, ChevronRight, ArrowRight, Sparkles, Zap, ChevronDown } fro
 import hifuContlexSense from "@/assets/hifu-contlex-sense.png";
 import hifu360SmartMax from "@/assets/hifu-360-smart-max.png";
 import MagneticButton from "@/components/MagneticButton";
+import HeroVideo, { HeroVideoConfig } from "@/components/HeroVideo";
 
-const slides = [
+interface Slide {
+  title: string;
+  subtitle: string;
+  desc: string;
+  link: string;
+  image: string;
+  badge: string;
+  gradient: string;
+  /** Voliteľné YouTube video: "portrait" = 9:16 namiesto fotky, "fullscreen" = video na celej ploche */
+  video?: HeroVideoConfig;
+}
+
+const slides: Slide[] = [
   {
     title: "APOLO",
     subtitle: "IPL platforma plná svetla.",
