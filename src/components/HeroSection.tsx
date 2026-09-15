@@ -193,8 +193,8 @@ const HeroSection = () => {
                   </div>
                 </div>
 
-                {/* Image */}
-                 <div className={`flex h-[260px] sm:h-[310px] lg:h-auto justify-center items-center transition-all duration-700 delay-300 ${i === current ? "translate-y-0 opacity-100 scale-100" : "translate-y-8 opacity-0 scale-95"}`}>
+                {/* Image / video */}
+                 <div className={`${isFull ? "hidden" : "flex"} h-[260px] sm:h-[310px] lg:h-auto justify-center items-center transition-all duration-700 delay-300 ${i === current ? "translate-y-0 opacity-100 scale-100" : "translate-y-8 opacity-0 scale-95"}`}>
                   <div
                     className="relative will-change-transform transition-transform duration-300 ease-out"
                     style={{
