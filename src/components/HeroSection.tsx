@@ -3,8 +3,21 @@ import { ChevronLeft, ChevronRight, ArrowRight, Sparkles, Zap, ChevronDown } fro
 import hifuContlexSense from "@/assets/hifu-contlex-sense.png";
 import hifu360SmartMax from "@/assets/hifu-360-smart-max.png";
 import MagneticButton from "@/components/MagneticButton";
+import HeroVideo, { HeroVideoConfig } from "@/components/HeroVideo";
 
-const slides = [
+interface Slide {
+  title: string;
+  subtitle: string;
+  desc: string;
+  link: string;
+  image: string;
+  badge: string;
+  gradient: string;
+  /** Voliteľné YouTube video: "portrait" = 9:16 namiesto fotky, "fullscreen" = video na celej ploche */
+  video?: HeroVideoConfig;
+}
+
+const slides: Slide[] = [
   {
     title: "APOLO",
     subtitle: "IPL platforma plná svetla.",
@@ -62,8 +75,9 @@ const HeroSection = () => {
   const handleMouseLeave = () => setTilt({ x: 0, y: 0 });
 
   useEffect(() => {
-    const timer = setInterval(() => goTo((current + 1) % slides.length), 7000);
-    return () => clearInterval(timer);
+    const delay = slides[current].video ? 16000 : 7000;
+    const timer = setTimeout(() => goTo((current + 1) % slides.length), delay);
+    return () => clearTimeout(timer);
   }, [current, goTo]);
 
   const pad = (n: number) => String(n).padStart(2, "0");
@@ -109,7 +123,9 @@ const HeroSection = () => {
       }} />
 
       {/* Slides */}
-      {slides.map((slide, i) => (
+      {slides.map((slide, i) => {
+        const isFull = slide.video?.mode === "fullscreen";
+        return (
         <div
           key={i}
           className={`absolute inset-0 transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
@@ -120,6 +136,15 @@ const HeroSection = () => {
               : "opacity-0 -translate-x-[5%] blur-[2px]"
           }`}
         >
+          {isFull && slide.video && (
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute inset-0 scale-[1.35] sm:scale-125">
+                <HeroVideo video={slide.video} active={i === current} title={slide.title} />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--navy-dark)/0.92)] via-[hsl(var(--navy-dark)/0.65)] to-[hsl(var(--navy-dark)/0.35)]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--navy-dark))] via-transparent to-[hsl(var(--navy-dark)/0.5)]" />
+            </div>
+          )}
            <div className="absolute inset-0 flex items-start lg:items-center pt-5 sm:pt-8 lg:pt-0">
              <div className="container mx-auto px-4 lg:px-8">
                <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-8 lg:gap-16 items-center">
@@ -127,7 +152,7 @@ const HeroSection = () => {
                 <div className={`transition-all duration-700 delay-200 ${i === current ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
                    <div className="relative p-5 sm:p-7 lg:p-10 rounded-lg sm:rounded-2xl lg:rounded-3xl overflow-hidden">
                     {/* Subtle readability panel */}
-                     <div className="absolute inset-0 bg-navy-dark/35 backdrop-blur-2xl rounded-lg sm:rounded-2xl lg:rounded-3xl ring-1 ring-primary-foreground/10" />
+                     <div className={`absolute inset-0 rounded-lg sm:rounded-2xl lg:rounded-3xl ${isFull ? "bg-transparent" : "bg-navy-dark/35 backdrop-blur-2xl ring-1 ring-primary-foreground/10"}`} />
 
                     <div className="relative z-10">
                        <div className="flex items-center gap-3 mb-4 sm:mb-6">
@@ -150,12 +175,17 @@ const HeroSection = () => {
                           </span>
                         ))}
                       </h1>
-                       <p className="text-base sm:text-lg md:text-xl text-primary-foreground/80 mb-2 sm:mb-3 font-light">
-                        {slide.subtitle}
-                      </p>
-                       <p className="text-primary-foreground/55 mb-5 sm:mb-8 lg:mb-10 text-[13px] sm:text-sm md:text-base max-w-lg leading-relaxed line-clamp-3 sm:line-clamp-none">
-                        {slide.desc}
-                      </p>
+                      {!isFull && (
+                        <>
+                          <p className="text-base sm:text-lg md:text-xl text-primary-foreground/80 mb-2 sm:mb-3 font-light">
+                            {slide.subtitle}
+                          </p>
+                          <p className="text-primary-foreground/55 mb-5 sm:mb-8 lg:mb-10 text-[13px] sm:text-sm md:text-base max-w-lg leading-relaxed line-clamp-3 sm:line-clamp-none">
+                            {slide.desc}
+                          </p>
+                        </>
+                      )}
+                      {isFull && <div className="mb-5 sm:mb-8" />}
 
                        <div className="grid grid-cols-1 min-[390px]:grid-cols-2 items-center gap-2.5 sm:flex sm:flex-wrap sm:gap-3">
                         <MagneticButton
@@ -180,8 +210,8 @@ const HeroSection = () => {
                   </div>
                 </div>
 
-                {/* Image */}
-                 <div className={`flex h-[260px] sm:h-[310px] lg:h-auto justify-center items-center transition-all duration-700 delay-300 ${i === current ? "translate-y-0 opacity-100 scale-100" : "translate-y-8 opacity-0 scale-95"}`}>
+                {/* Image / video */}
+                 <div className={`${isFull ? "hidden" : "flex"} h-[260px] sm:h-[310px] lg:h-auto justify-center items-center transition-all duration-700 delay-300 ${i === current ? "translate-y-0 opacity-100 scale-100" : "translate-y-8 opacity-0 scale-95"}`}>
                   <div
                     className="relative will-change-transform transition-transform duration-300 ease-out"
                     style={{
@@ -226,18 +256,30 @@ const HeroSection = () => {
                     {/* Reflection plate under product */}
                     <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-8 bg-accent/20 rounded-[50%] blur-2xl" />
 
-                    <img
-                      src={slide.image}
-                      alt={slide.title}
-                       className="relative z-10 max-h-[245px] sm:max-h-[300px] md:max-h-[480px] lg:max-h-[600px] max-w-[78vw] w-auto object-contain drop-shadow-2xl animate-float"
-                    />
+                    {slide.video?.mode === "portrait" ? (
+                      <div className="relative z-10 w-[min(78vw,260px)] sm:w-[280px] lg:w-[330px] aspect-[9/16] max-h-[245px] sm:max-h-[300px] md:max-h-[480px] lg:max-h-[600px] overflow-hidden rounded-2xl ring-1 ring-primary-foreground/10 shadow-2xl bg-navy-dark">
+                        <img
+                          src={slide.image}
+                          alt={slide.title}
+                          className="absolute inset-0 h-full w-full object-contain opacity-60"
+                        />
+                        <HeroVideo video={slide.video} active={i === current} title={slide.title} />
+                      </div>
+                    ) : (
+                      <img
+                        src={slide.image}
+                        alt={slide.title}
+                         className="relative z-10 max-h-[245px] sm:max-h-[300px] md:max-h-[480px] lg:max-h-[600px] max-w-[78vw] w-auto object-contain drop-shadow-2xl animate-float"
+                      />
+                    )}
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      ))}
+        );
+      })}
 
       {/* Navigation */}
       <button
