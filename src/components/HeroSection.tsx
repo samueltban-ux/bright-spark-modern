@@ -122,7 +122,9 @@ const HeroSection = () => {
       }} />
 
       {/* Slides */}
-      {slides.map((slide, i) => (
+      {slides.map((slide, i) => {
+        const isFull = slide.video?.mode === "fullscreen";
+        return (
         <div
           key={i}
           className={`absolute inset-0 transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
@@ -133,6 +135,15 @@ const HeroSection = () => {
               : "opacity-0 -translate-x-[5%] blur-[2px]"
           }`}
         >
+          {isFull && slide.video && (
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute inset-0 scale-[1.35] sm:scale-125">
+                <HeroVideo video={slide.video} active={i === current} title={slide.title} />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--navy-dark)/0.92)] via-[hsl(var(--navy-dark)/0.65)] to-[hsl(var(--navy-dark)/0.35)]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--navy-dark))] via-transparent to-[hsl(var(--navy-dark)/0.5)]" />
+            </div>
+          )}
            <div className="absolute inset-0 flex items-start lg:items-center pt-5 sm:pt-8 lg:pt-0">
              <div className="container mx-auto px-4 lg:px-8">
                <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-8 lg:gap-16 items-center">
@@ -140,7 +151,7 @@ const HeroSection = () => {
                 <div className={`transition-all duration-700 delay-200 ${i === current ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
                    <div className="relative p-5 sm:p-7 lg:p-10 rounded-lg sm:rounded-2xl lg:rounded-3xl overflow-hidden">
                     {/* Subtle readability panel */}
-                     <div className="absolute inset-0 bg-navy-dark/35 backdrop-blur-2xl rounded-lg sm:rounded-2xl lg:rounded-3xl ring-1 ring-primary-foreground/10" />
+                     <div className={`absolute inset-0 rounded-lg sm:rounded-2xl lg:rounded-3xl ${isFull ? "bg-transparent" : "bg-navy-dark/35 backdrop-blur-2xl ring-1 ring-primary-foreground/10"}`} />
 
                     <div className="relative z-10">
                        <div className="flex items-center gap-3 mb-4 sm:mb-6">
